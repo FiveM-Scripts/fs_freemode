@@ -15,8 +15,6 @@ local Settings = {
 
 	--MultiplayerInfo / Z
 	[20] = true,
-	--Detonate / G
-	--[47] = true,
 }
 
 -- END OF SETTINGS --

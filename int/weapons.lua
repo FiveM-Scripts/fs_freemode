@@ -49,7 +49,7 @@ Citizen.CreateThread(function()
       end
 
       if doordist < 4 then
-        TriggerEvent("fs_core:displayHelp", "Press ~INPUT_CONTEXT~ to browse weapons")
+        TriggerEvent("fs_freemode:displayHelp", "Press ~INPUT_CONTEXT~ to browse weapons")
         if IsControlJustPressed(1, 46) then
           TriggerEvent("fivem-stores:weapon-menu:show", true)
         end

@@ -11,7 +11,7 @@ AddEventHandler("playerSpawned", function(spawn)
 
 		Citizen.InvokeNative(GetHashKey("ADD_TEXT_ENTRY"), 'FE_THDR_GTAO', Setup.ServerName)
 		if Setup.DisplayWelcomeNotification then
-			TriggerEvent("fs_core:notify", "CHAR_SOCIAL_CLUB", 4, 2, Setup.ServerName, false, "Welcome ~g~".. playerName)
+			TriggerEvent("fs_freemode:notify", "CHAR_SOCIAL_CLUB", 4, 2, Setup.ServerName, false, "Welcome ~g~".. playerName)
 		end
 
 		-- Configure audio settings
