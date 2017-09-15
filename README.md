@@ -8,6 +8,8 @@
 
 ## Documentation   
 Documentation for fs_freemode can be found [here](https://freemode.readme.io).
+The changelog for fs_freemode can be found [here](CHANGELOG.md)
+
 
 ## Bug reporting
 Creating a bug report serves to help yourself and others start on the path of fixing the problem.    
