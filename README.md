@@ -6,12 +6,8 @@
 - [FXServer](https://wiki.fivem.net/wiki/Running_FXServer)
 - [EssentialMode base](https://forum.fivem.net/t/release-essentialmode-base)
 
-## Installation   
-1. Extract the files to `resources/fs_freemode`.
-2. Change the gametype in your map resource (skater/hipster) to `fs_freemode`.
-3. Open **resources/fs_freemode/config.lua** to configure the game mode to your preferences.
-4. Go back to the FXServer root folder, open **server.cfg** and add `start fs_freemode`.
-5. Start your FXServer.
+## Documentation   
+Documentation for fs_freemode can be found [here](https://freemode.readme.io).
 
 ## Bug reporting
 Creating a bug report serves to help yourself and others start on the path of fixing the problem.    
