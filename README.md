@@ -7,7 +7,7 @@
 - [EssentialMode base](https://forum.fivem.net/t/release-essentialmode-base)
 
 ## Documentation   
-Documentation for fs_freemode can be found [here](https://freemode.readme.io).
+Documentation for fs_freemode can be found [here](https://freemode.readme.io).    
 The changelog for fs_freemode can be found [here](CHANGELOG.md)
 
 
