@@ -21,7 +21,8 @@ client_scripts {
   'int/comedy.lua',
   'int/weapons.lua',
   'ext/locations.lua',
-  'ext/trains.lua',
+  'ext/pickups.lua',
+  'ext/trains.lua'
 }
 
 server_scripts {

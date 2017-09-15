@@ -1,20 +1,24 @@
 Setup = {}
 
--- Configure your server name
 Setup.ServerName = "My Server"
--- Enable or disable the welcome notification.
 Setup.DisplayWelcomeNotification = true
--- Enable locations on the map.
 Setup.blips = true
--- Configure the default cash that all new players receive.
 Setup.Money = 500000
--- Use the GTA Native Money System
 Setup.NativeMoney = true
--- Change what currency is used
 Setup.Currency = "$"
--- Enable or Disable the wanted music
 Setup.WantedMusicDisabled = true
--- Enable or Disable wanted stars above the players head when he is wanted.
 Setup.WantedHeadDisplay = true
--- Enable or disable the voice con above he players head when he is talking.
 Setup.VoiceHeadDisplay = true
+Setup.SpawnPickups = true
+Setup.debug = false
+
+PickupItems = {
+    "PICKUP_ARMOUR_STANDARD",
+    "PICKUP_HEALTH_STANDARD",
+    "PICKUP_WEAPON_SMG",
+    "PICKUP_WEAPON_SAWNOFFSHOTGUN",
+    "PICKUP_WEAPON_ASSAULTRIFLE",
+    "PICKUP_WEAPON_GRENADE",
+    "PICKUP_WEAPON_MINISMG",
+    "PICKUP_WEAPON_AUTOSHOTGUN"
+}
