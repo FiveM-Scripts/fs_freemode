@@ -1,5 +1,5 @@
 # fs_freemode
-[![Version](https://img.shields.io/badge/version-1.0-brightgreen.svg)]()
+[![Version](https://img.shields.io/badge/Version-1.1-brightgreen.svg)]()
 <a href="https://discord.gg/Cgr5FU6" title="Chat on Discord"><img alt="Discord Status" src="https://discordapp.com/api/guilds/285462938691567627/widget.png"></a>
 
 ## Requirements
