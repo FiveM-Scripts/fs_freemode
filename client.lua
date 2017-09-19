@@ -4,7 +4,6 @@ AddEventHandler('onClientMapStart', function()
 end)
 
 AddEventHandler("playerSpawned", function(spawn)
-	Citizen.CreateThread(function()
 		local playerID = PlayerId()
 		local player = GetPlayerPed(-1)
 		local playerName = GetPlayerName(playerID)
@@ -14,16 +13,15 @@ AddEventHandler("playerSpawned", function(spawn)
 			TriggerEvent("fs_freemode:notify", "CHAR_SOCIAL_CLUB", 4, 2, Setup.ServerName, false, "Welcome ~g~".. playerName)
 		end
 
-		-- Configure audio settings
 		SetAudioFlag("LoadMPData", true)
 		SetAudioFlag("WantedMusicDisabled", Setup.WantedMusicDisabled)
-		-- Give the player some default weapons
+		
 		GiveWeaponToPed(player, GetHashKey("WEAPON_PISTOL"), true, true)
 		GiveWeaponToPed(player, GetHashKey("WEAPON_KNIFE"), true, true)
-	end)
+
+		TriggerServerEvent("fs_freemode:playerSpawned")		
 end)
 
--- Disable money display on pause menu and set the ServerName
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(1)

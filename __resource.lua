@@ -27,6 +27,8 @@ client_scripts {
 
 server_scripts {
   'config.lua',
+  'database.lua',
+  'libs/db.lua',
   'server.lua',
   'int/weapons_s.lua'
 }

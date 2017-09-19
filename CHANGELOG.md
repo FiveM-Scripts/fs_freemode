@@ -1,6 +1,14 @@
 # Changelog    
 All notable changes to this project will be documented in this file.
 
+
+## v1.1 - 19/09/2017
+
+### Features
+- Added custom CouchDB database fs_freemode.
+- Improved the Ammu-Nation stores.
+- Added IPL for Maze Bank Arena, Yacht, Bunkers.
+
 ## v1.0 - 15/09/2017
 
 ### Features
