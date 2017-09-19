@@ -1,5 +1,7 @@
 local weaponPed = {}
 local weaponsLoaded = false
+local WeaponPurchased = false
+
 local weapon_peds = {
   {model="s_m_m_ammucountry", voice="S_M_M_AMMUCOUNTRY_WHITE_MINI_01", x=1692.733, y=3761.895, z=34.705, a=218.535},
   {model="s_m_m_ammucountry", voice="S_M_M_AMMUCOUNTRY_WHITE_MINI_01", x=-330.933, y=6085.677, z=31.455, a=207.323},
@@ -10,6 +12,7 @@ local weapon_peds = {
   {model="s_m_y_ammucity_01", voice="S_M_Y_AMMUCITY_01_WHITE_MINI_01", x=-1118.037, y=2700.568, z=18.554, a=196.070},
   {model="s_m_y_ammucity_01", voice="S_M_Y_AMMUCITY_01_WHITE_MINI_01", x=2566.596, y=292.286, z=108.735, a=337.291},
   {model="s_m_y_ammucity_01", voice="S_M_Y_AMMUCITY_01_WHITE_MINI_01", x=-3173.182, y=1089.176, z=20.839, a=223.930},
+  {model="s_m_y_ammucity_01", voice="S_M_Y_AMMUCITY_01_WHITE_MINI_01", x=23.394, y=-1105.455, z=29.797, a=147.921}
 }
 
 Citizen.CreateThread(function()
@@ -59,7 +62,60 @@ Citizen.CreateThread(function()
   end
 end)
 
-RegisterNetEvent("fivem-stores:giveWeapon")
-AddEventHandler("fivem-stores:giveWeapon", function(weapon)
+
+RegisterNetEvent("fivem-stores:SpawnWeapon")
+AddEventHandler("fivem-stores:SpawnWeapon", function(weapon)
+  Citizen.CreateThread(function()
+  Citizen.Trace("i just bought a weapon\n")
   GiveWeaponToPed(GetPlayerPed(-1), GetHashKey(weapon), 2000, false)
+  PlaySoundFrontend(-1, "WEAPON_PURCHASE", "HUD_AMMO_SHOP_SOUNDSET", 1)
+  end)
+end)
+
+
+RegisterNetEvent("fivem-stores:giveWeapon")
+AddEventHandler("fivem-stores:giveWeapon", function(weapon, WeaponName)
+  Citizen.CreateThread(function()
+    Citizen.Trace("i just bought a weapon\n")
+    GiveWeaponToPed(GetPlayerPed(-1), GetHashKey(weapon), 2000, false)
+    PlaySoundFrontend(-1, "WEAPON_PURCHASE", "HUD_AMMO_SHOP_SOUNDSET", 1)
+
+    WeaponPurchased = true
+    WeaponNamePurchased = WeaponName
+  end)
+end)
+
+Citizen.CreateThread(function()
+  while true do
+    Citizen.Wait(0)
+    if WeaponPurchased then
+      scaleform = RequestScaleformMovie("MP_BIG_MESSAGE_FREEMODE")
+      if HasScaleformMovieLoaded(scaleform) then
+        PushScaleformMovieFunction(scaleform, "SHOW_WEAPON_PURCHASED")
+
+        BeginTextComponent("STRING")
+        Citizen.InvokeNative(0x6C188BE134E074AA, "Weapon Purchased")
+        EndTextComponent()
+
+        BeginTextComponent("STRING")
+        Citizen.InvokeNative(0x6C188BE134E074AA, tostring(WeaponNamePurchased))
+        EndTextComponent()
+
+        PopScaleformMovieFunctionVoid()
+        DrawScaleformMovieFullscreen(scaleform, 255, 255, 255, 255)
+        PrintMe = true
+      end
+    end
+  end
+end)
+
+
+Citizen.CreateThread(function()
+  while true do
+    Citizen.Wait(3885)
+    if WeaponPurchased and PrintMe then
+     SetScaleformMovieAsNoLongerNeeded(scaleform)
+     WeaponPurchased = false
+    end
+  end
 end)

@@ -21,3 +21,13 @@ AddEventHandler("fs_freemode:notify", function(icon, type, color, sender, title,
 	SetNotificationMessage(icon, icon, true, type, sender, title, text);
 	DrawNotification(false, true);
 end)
+
+RegisterNetEvent('fs_freemode:spawnWeapons')
+AddEventHandler('fs_freemode:spawnWeapons', function(weapon)
+	Wait(1000)
+	if Setup.debug == true then
+		Citizen.Trace("Adding weapon: " .. weapon .."\n")
+	end
+	
+	GiveWeaponToPed(GetPlayerPed(-1), GetHashKey(weapon), 1000, false)
+end)
