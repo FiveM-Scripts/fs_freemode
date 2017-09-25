@@ -20,6 +20,7 @@ client_scripts {
   'client.lua',
   'int/comedy.lua',
   'int/weapons.lua',
+  'int/warehouses',
   'ext/locations.lua',
   'ext/pickups.lua',
   'ext/trains.lua'
