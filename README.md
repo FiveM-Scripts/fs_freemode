@@ -1,10 +1,10 @@
 # fs_freemode
-[![Version](https://img.shields.io/badge/Version-1.1-brightgreen.svg)]()
+[![Version](https://img.shields.io/badge/Version-1.2-brightgreen.svg)]()
 <a href="https://discord.gg/Cgr5FU6" title="Chat on Discord"><img alt="Discord Status" src="https://discordapp.com/api/guilds/285462938691567627/widget.png"></a>
 
 ## Requirements
 - [FXServer](https://wiki.fivem.net/wiki/Running_FXServer)
-- [EssentialMode base](https://forum.fivem.net/t/release-essentialmode-base)
+- [EssentialMode](https://forum.fivem.net/t/release-essentialmode-base)
 
 ## Documentation   
  Documentation for fs_freemode can be found [here](https://freemode.readme.io).    

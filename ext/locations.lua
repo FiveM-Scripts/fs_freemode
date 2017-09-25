@@ -29,6 +29,9 @@ local locations = {
   {name="Police station", id=60, x=818.221, y=-1289.883, z=26.300},
   {name="Prison", id=285, x=1679.049, y=2513.711, z=45.565},
   {name="Yacht", id=410, x=-2045.800, y=-1031.200, z=11.900},
+  {name="Weed Warehouse", id=496, x=1308.95, y=4362.15, z=30.0},
+  {name="Cocaine Warehouse", id=497, x=387.40, y=3583.45, z=30.0},
+  {name="Meth Warehouse", id=499, x=1179.732, y=-3114.203, z=6.028}  
 }
 
 Citizen.CreateThread(function()
@@ -92,5 +95,10 @@ Citizen.CreateThread(function()
   RequestIpl("gr_case7_bunkerclosed")
   RequestIpl("gr_case9_bunkerclosed")
   RequestIpl("gr_case10_bunkerclosed")
-  RequestIpl("gr_case11_bunkerclosed")
+  RequestIpl("gr_case11_bunkerclosed")   
+  RequestIpl("bkr_biker_interior_placement_interior_0_biker_dlc_int_01_milo")
+  RequestIpl("bkr_biker_interior_placement_interior_1_biker_dlc_int_02_milo")
+  RequestIpl("bkr_biker_interior_placement_interior_2_biker_dlc_int_ware01_milo")
+  RequestIpl("bkr_biker_interior_placement_interior_3_biker_dlc_int_ware02_milo")
+  RequestIpl("bkr_biker_interior_placement_interior_4_biker_dlc_int_ware03_milo")   
 end)

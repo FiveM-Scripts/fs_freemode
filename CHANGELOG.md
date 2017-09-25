@@ -1,6 +1,9 @@
 # Changelog    
 All notable changes to this project will be documented in this file.
 
+## v1.2 
+- Added meth, weed, cocaine warehouses.
+- Added Gunrunning DLC weapons.
 
 ## v1.1 - 19/09/2017
 

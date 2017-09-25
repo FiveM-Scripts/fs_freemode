@@ -163,6 +163,15 @@
 		<Price>3900.00</Price>
 	</Weapons>
 	<Weapons>
+		<Hash>3219281620</Hash>
+		<Name>WEAPON_PISTOL_MK2</Name>
+		<FriendlyName>Pistol MK2</FriendlyName>
+		<GroupHash>416676503u</GroupHash>
+		<GroupName>Pistol</GroupName>
+		<GroupFriendlyName>Handguns</GroupFriendlyName>
+		<Price>3900.00</Price>
+	</Weapons>	
+	<Weapons>
 		<Hash>0xBFD21232</Hash>
 		<Name>WEAPON_SNSPISTOL</Name>
 		<FriendlyName>SNS Pistol</FriendlyName>
@@ -262,6 +271,15 @@
 		<Price>14900.00</Price>
 	</Weapons>
 	<Weapons>
+		<Hash>2024373456</Hash>
+		<Name>WEAPON_SMG_MK2</Name>
+		<FriendlyName>SMG MK2</FriendlyName>
+		<GroupHash>3337201093u</GroupHash>
+		<GroupName>SMG</GroupName>
+		<GroupFriendlyName>SMG</GroupFriendlyName>
+		<Price>12550.00</Price>
+	</Weapons>
+	<Weapons>
 		<Hash>0xEFE7E2DF</Hash>
 		<Name>WEAPON_ASSAULTSMG</Name>
 		<FriendlyName>Assault SMG</FriendlyName>
@@ -352,6 +370,15 @@
 		<Price>8550.00</Price>
 	</Weapons>
 	<Weapons>
+		<Hash>0xAF113F99</Hash>
+		<Name>WEAPON_ASSAULTRIFLE_MK2</Name>
+		<FriendlyName>Assault Rifle MK2</FriendlyName>
+		<GroupHash>970310034u</GroupHash>
+		<GroupName>AssaultRifle</GroupName>
+		<GroupFriendlyName>Assault Rifles</GroupFriendlyName>
+		<Price>14250.00</Price>
+	</Weapons>	
+	<Weapons>
 		<Hash>0x7F229F94</Hash>
 		<Name>WEAPON_BULLPUPRIFLE</Name>
 		<FriendlyName>Bullpup Rifle</FriendlyName>
@@ -369,6 +396,15 @@
 		<GroupFriendlyName>Assault Rifles</GroupFriendlyName>
 		<Price>13000.00</Price>
 	</Weapons>
+	<Weapons>
+		<Hash>0x83BF0278</Hash>
+		<Name>WEAPON_CARBINERIFLE_MK2</Name>
+		<FriendlyName>Carbine Rifle MK2</FriendlyName>
+		<GroupHash>970310034u</GroupHash>
+		<GroupName>AssaultRifle</GroupName>
+		<GroupFriendlyName>Assault Rifles</GroupFriendlyName>
+		<Price>13000.00</Price>
+	</Weapons>	
 	<Weapons>
 		<Hash>0x624FE830</Hash>
 		<Name>WEAPON_COMPACTRIFLE</Name>
