@@ -9,7 +9,7 @@ Citizen.CreateThread(function()
 			if IsControlJustPressed(0, 38) then
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
-				SetEntityCoords(player, 1063.445, -3183.618, -39.164, 168.407)
+				SetEntityCoords(GetPlayerPed(-1), 1063.445, -3183.618, -39.164, 168.407)
 
 				EnableInteriorProp(247297, "weed_upgrade_equip")
 				EnableInteriorProp(247297, "weed_drying")
@@ -67,7 +67,7 @@ Citizen.CreateThread(function()
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
 				
-				SetEntityCoords(player, 1318.317, 4360.806, 41.170, 239.736)
+				SetEntityCoords(GetPlayerPed(-1), 1318.317, 4360.806, 41.170, 239.736)
 				
 				Citizen.Wait(1000)
 				DoScreenFadeIn(1000)
@@ -127,6 +127,7 @@ Citizen.CreateThread(function()
 				EnableInteriorProp(247041, "meth_lab_upgrade")
 				EnableInteriorProp(247041, "meth_lab_production")
 				EnableInteriorProp(247041, "meth_lab_security_high")
+				
 				EnableInteriorProp(247041, "meth_lab_setup")
 				RefreshInterior(247041)
 				Citizen.Wait(1000)
@@ -139,9 +140,10 @@ Citizen.CreateThread(function()
 			if IsControlJustPressed(0, 38) then
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
+				
 				SetEntityCoords(GetPlayerPed(-1), 1175.980, -3113.109, 6.028)
 				Citizen.Wait(1000)
-				DoScreenFadeIn(1000)				
+				DoScreenFadeIn(1000)
 			end
 		end		
 
