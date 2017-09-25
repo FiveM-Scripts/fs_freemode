@@ -4,7 +4,7 @@
 
 ## Requirements
 - [FXServer](https://wiki.fivem.net/wiki/Running_FXServer)
-- [EssentialMode base](https://forum.fivem.net/t/release-essentialmode-base)
+- [EssentialMode](https://forum.fivem.net/t/release-essentialmode-base)
 
 ## Documentation   
  Documentation for fs_freemode can be found [here](https://freemode.readme.io).    
