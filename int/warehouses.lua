@@ -147,5 +147,169 @@ Citizen.CreateThread(function()
 			end
 		end		
 
-	end
+	if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 958.50, -1586.30, 30.0, true) <= 3.0 then
+		TriggerEvent("fs_freemode:displayHelp", "Press ~INPUT_CONTEXT~ to enter the warehouse")
+			if IsControlJustPressed(0, 38) then
+				DoScreenFadeOut(1000)
+				Citizen.Wait(1500)
+
+				SetEntityCoords(GetPlayerPed(-1), 1094.988, -3101.776, -39.00363)
+				Citizen.Wait(1000)
+				DoScreenFadeIn(1000)				
+			end
+		end
+	if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 1087.442, -3099.381, -39.000, true) <= 3.0 then
+		TriggerEvent("fs_freemode:displayHelp", "Press ~INPUT_CONTEXT~ to exit the warehouse")
+			if IsControlJustPressed(0, 38) then
+				DoScreenFadeOut(1000)
+				Citizen.Wait(1500)
+
+				SetEntityCoords(GetPlayerPed(-1), 963.946, -1585.238, 30.447)
+				Citizen.Wait(1000)
+				DoScreenFadeIn(1000)				
+			end
+		end		
+
+	if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 758.885, -909.322, 25.433, true) <= 3.0 then
+		TriggerEvent("fs_freemode:displayHelp", "Press ~INPUT_CONTEXT~ to enter the warehouse")
+			if IsControlJustPressed(0, 38) then
+				DoScreenFadeOut(1000)
+				Citizen.Wait(1500)
+
+				SetEntityCoords(GetPlayerPed(-1), 1056.486, -3105.724, -39.00439)
+				Citizen.Wait(1000)
+				DoScreenFadeIn(1000)				
+			end
+		end
+	if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 1048.121, -3097.397, -39.000, true) <= 2.0 then
+		TriggerEvent("fs_freemode:displayHelp", "Press ~INPUT_CONTEXT~ to exit the warehouse")
+			if IsControlJustPressed(0, 38) then
+				DoScreenFadeOut(1000)
+				Citizen.Wait(1500)
+
+				SetEntityCoords(GetPlayerPed(-1), 764.240, -909.404, 25.249)
+				Citizen.Wait(1000)
+				DoScreenFadeIn(1000)				
+			end
+		end
+
+	if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 713.872, -719.268, 26.073, true) <= 3.0 then
+		TriggerEvent("fs_freemode:displayHelp", "Press ~INPUT_CONTEXT~ to enter the warehouse")
+			if IsControlJustPressed(0, 38) then
+				DoScreenFadeOut(1000)
+				Citizen.Wait(1500)
+
+				SetEntityCoords(GetPlayerPed(-1), 1006.967, -3102.079, -39.0035)
+				Citizen.Wait(1000)
+				DoScreenFadeIn(1000)				
+			end
+		end
+	if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 1026.813, -3101.653, -39.000, true) <= 2.0 then
+		TriggerEvent("fs_freemode:displayHelp", "Press ~INPUT_CONTEXT~ to exit the warehouse")
+			if IsControlJustPressed(0, 38) then
+				DoScreenFadeOut(1000)
+				Citizen.Wait(1500)
+
+				SetEntityCoords(GetPlayerPed(-1), 716.450, -724.156, 25.971)
+				Citizen.Wait(1000)
+				DoScreenFadeIn(1000)				
+			end
+		end
+
+		if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 639.965, 2773.929, 42.013, true) <= 5.0 then
+			TriggerEvent("fs_freemode:displayHelp", "Press ~INPUT_CONTEXT~ to enter the warehouse")
+			if IsControlJustPressed(0, 38) then
+				DoScreenFadeOut(1000)
+				Citizen.Wait(1500)
+
+				EnableInteriorProp(247809, "counterfeit_security")
+				EnableInteriorProp(247809, "counterfeit_cashpile100a")
+				EnableInteriorProp(247809, "counterfeit_cashpile20a")
+
+				EnableInteriorProp(247809, "counterfeit_cashpile10a")
+				EnableInteriorProp(247809, "counterfeit_cashpile100b")
+				EnableInteriorProp(247809, "counterfeit_cashpile100c")
+
+				EnableInteriorProp(247809, "counterfeit_cashpile100d")
+				EnableInteriorProp(247809, "counterfeit_cashpile20b")
+				EnableInteriorProp(247809, "counterfeit_cashpile20c")
+
+				EnableInteriorProp(247809, "counterfeit_cashpile20d")
+				EnableInteriorProp(247809, "counterfeit_cashpile10b")
+				EnableInteriorProp(247809, "counterfeit_cashpile10c")
+
+				EnableInteriorProp(247809, "counterfeit_cashpile10d")
+				EnableInteriorProp(247809, "counterfeit_setup")
+				EnableInteriorProp(247809, "counterfeit_upgrade_equip")
+
+				EnableInteriorProp(247809, "dryera_on")
+				EnableInteriorProp(247809, "dryerb_on")
+				EnableInteriorProp(247809, "dryerc_on")
+
+				EnableInteriorProp(247809, "dryerd_on")
+				EnableInteriorProp(247809, "money_cutter")
+				EnableInteriorProp(247809, "special_chairs")
+
+				RefreshInterior(247809)
+				SetEntityCoords(GetPlayerPed(-1), 1121.897, -3195.338, -40.4025)
+
+				Citizen.Wait(1000)
+				DoScreenFadeIn(1000)				
+			end
+		end
+	if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 1118.683, -3193.319, -40.391, true) <= 2.0 then
+		TriggerEvent("fs_freemode:displayHelp", "Press ~INPUT_CONTEXT~ to exit the warehouse")
+			if IsControlJustPressed(0, 38) then
+				DoScreenFadeOut(1000)
+				Citizen.Wait(1500)
+
+				SetEntityCoords(GetPlayerPed(-1), 642.178, 2784.369, 41.975, 125.059)
+				Citizen.Wait(1000)
+				DoScreenFadeIn(1000)				
+			end
+		end
+
+		if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 378.646, -834.4833, 29.292, true) <= 3.0 then
+			TriggerEvent("fs_freemode:displayHelp", "Press ~INPUT_CONTEXT~ to enter the warehouse")
+			if IsControlJustPressed(0, 38) then
+				DoScreenFadeOut(1000)
+				Citizen.Wait(1500)
+
+				EnableInteriorProp(246785, "equipment_upgrade")
+				EnableInteriorProp(246785, "production")
+				EnableInteriorProp(246785, "security_high")
+
+				EnableInteriorProp(246785, "set_up")
+				EnableInteriorProp(246785, "clutter")
+				EnableInteriorProp(246785, "interior_upgrade")
+
+				EnableInteriorProp(246785, "chair01")
+				EnableInteriorProp(246785, "chair02")
+				EnableInteriorProp(246785, "chair03")
+
+				EnableInteriorProp(246785, "chair04")
+				EnableInteriorProp(246785, "chair05")
+				EnableInteriorProp(246785, "chair06")
+				EnableInteriorProp(246785, "chair07")
+
+				RefreshInterior(246785) 
+				SetEntityCoords(GetPlayerPed(-1), 1171.920, -3195.916, -39.008, 206.511)
+
+				Citizen.Wait(1000)
+				DoScreenFadeIn(1000)				
+			end
+		end
+	if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 1173.700, -3196.799, -39.008, true) <= 2.0 then
+		TriggerEvent("fs_freemode:displayHelp", "Press ~INPUT_CONTEXT~ to exit the warehouse")
+			if IsControlJustPressed(0, 38) then
+				DoScreenFadeOut(1000)
+				Citizen.Wait(1500)
+
+				SetEntityCoords(GetPlayerPed(-1), 366.980, -833.991, 29.292, 144.514)
+				Citizen.Wait(1000)
+				DoScreenFadeIn(1000)				
+			end
+		end
+  
+  end	
 end)

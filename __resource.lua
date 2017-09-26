@@ -18,6 +18,7 @@ client_scripts {
   'libs/scoreboard.lua',
   'config.lua',
   'client.lua',
+  'int/bunkers.lua',
   'int/comedy.lua',
   'int/weapons.lua',
   'int/warehouses',
