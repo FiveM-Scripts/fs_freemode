@@ -1,3 +1,5 @@
+local version = 'v1.2.1'
+
 TriggerEvent("es:setDefaultSettings", {
 	debugInformation = false,
 	moneyIcon = Setup.Currency,
@@ -35,3 +37,18 @@ AddEventHandler('fs_freemode:missionComplete', function(total)
 		user.addMoney(total)
 	end)
 end)
+
+PerformHttpRequest("https://updates.fivem-scripts.org/verify/" .. GetCurrentResourceName(), function(err, rData, headers)
+	if err == 404 or err == 403 then
+		print("\nUPDATE ERROR: your version could not be verified\n")		
+	else
+		local vData = json.decode(rData)
+		for k,v in pairs(vData) do		
+		if v.version ~= version then
+			print("\n************************************************************************************************")
+			print("You are running an outdated version of " .. GetCurrentResourceName())
+			print("************************************************************************************************\n")
+		end
+		end
+	end
+end, "GET", "", {["Content-Type"] = 'application/json'})
