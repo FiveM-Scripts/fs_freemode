@@ -1,4 +1,4 @@
-local version = 'v1.3'
+local version = 'v1.2.1'
 
 TriggerEvent("es:setDefaultSettings", {
 	debugInformation = false,
