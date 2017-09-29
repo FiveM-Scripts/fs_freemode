@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 
 ## v1.2.1
+- Small fix for updater.
+
+## v1.2.1
 - Added the feature to verify if you are running the latest version.
 
 ## v1.2 
