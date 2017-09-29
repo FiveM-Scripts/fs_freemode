@@ -1,4 +1,4 @@
-local version = 'v1.2.1'
+local version = 'v1.2.2'
 
 TriggerEvent("es:setDefaultSettings", {
 	debugInformation = false,
@@ -43,12 +43,10 @@ PerformHttpRequest("https://updates.fivem-scripts.org/verify/" .. GetCurrentReso
 		print("\nUPDATE ERROR: your version could not be verified\n")		
 	else
 		local vData = json.decode(rData)
-		for k,v in pairs(vData) do		
-		if v.version ~= version then
+		if vData.version ~= version then
 			print("\n************************************************************************************************")
 			print("You are running an outdated version of " .. GetCurrentResourceName())
 			print("************************************************************************************************\n")
-		end
 		end
 	end
 end, "GET", "", {["Content-Type"] = 'application/json'})
