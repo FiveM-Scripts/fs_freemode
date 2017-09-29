@@ -1,7 +1,7 @@
 # Changelog    
 All notable changes to this project will be documented in this file.
 
-## v1.2.1
+## v1.2.2
 - Small fix for updater.
 
 ## v1.2.1
