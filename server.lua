@@ -2,7 +2,7 @@ local version = 'v1.3.0'
 
 TriggerEvent("es:setDefaultSettings", {
 	debugInformation = false,
-	moneyIcon = GetConvar('money_currency', $),
+	moneyIcon = GetConvar('money_currency', "$"),
 	nativeMoneySystem = GetConvar('native_display', true),
 	pvpEnabled = GetConvar('pvp', true),
 	startingCash = GetConvar('default_cash', 5000),
