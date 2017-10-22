@@ -11,9 +11,11 @@ files {
 weaponfile 'weapons.xml'
 
 client_scripts {
+  'libs/i18n.lua',
   'bin/System.Xml.net.dll',
   'bin/NativeUI.net.dll',
   'bin/ShopMenu.net.dll',
+  'lang/en.lua',
   'libs/events.lua',
   'libs/scoreboard.lua',
   'config.lua',

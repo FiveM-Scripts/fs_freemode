@@ -1,11 +1,11 @@
-Translator = setmetatable({}, Translator)
-Translator.__index = Translator
+i18n = setmetatable({}, i18n)
+i18n.__index = i18n
 
 local store = {}
 local lang = {}
 avalLangs = {}
 
-function Translator.setup(l)
+function i18n.setup(l)
 	
 	if(l ~= nil)then
 		lang = l
@@ -13,21 +13,21 @@ function Translator.setup(l)
 	
 end
 
-function Translator.exportData()
+function i18n.exportData()
 	local result = store
 	return result
 end
 
-function Translator.importData(l,s)
+function i18n.importData(l,s)
 	table.insert( avalLangs, l)
 	store[l] = s
 end
 
-function Translator.setLang(l)
+function i18n.setLang(l)
 	lang = l
 end
 
-function Translator.translate(key)
+function i18n.translate(key)
 	local result = ""
 	if(store == nil) then
 		result = "Error 502 : no translation available!"
