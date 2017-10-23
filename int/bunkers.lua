@@ -264,6 +264,12 @@ Citizen.CreateThread(function()
 		end
 
 		if GetInteriorFromEntity(GetPlayerPed()) == 258561 then
+			SetCurrentPedWeapon(PlayerPedId(), GetHashKey("weapon_unarmed"))
+			
+			DisableControlAction(0, 22)
+			DisableControlAction(0, 24)
+			DisableControlAction(0, 25)
+
 			 --this draws the marker to enter the MOC
 			DrawMarker(1, 848.4579, -3242.338, -99.69917, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, 0.52, 0, 255, 255, 150, 0, 0, 2, 0, 0, 0, false)
 			if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1), true), 848.4579, -3242.338, -99.69917) < 5.8 and IsControlPressed(0, 38) then
@@ -280,7 +286,13 @@ Citizen.CreateThread(function()
 		--this draws the marker to return to the bunker from "MOC"
 		DrawMarker(1, 1102.645, -2986.465, -39.99833, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, 0.52, 0, 255, 255, 150, 0, 0, 2, 0, 0, 0, false )
 		if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1), true), 1102.645, -2986.465, -38.99833) < 3.8 and IsControlPressed(0, 38) then
+			DoScreenFadeOut(1000)
+			Citizen.Wait(1500)			
+			
 			SetEntityCoords(GetPlayerPed(-1), 885.982, -3245.716, -98.278)
+
+			Wait(1500)
+			DoScreenFadeIn(1500)
 		end
 
 		if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 894.5, -3245.75, -98.27, true) <= 5.0 then
