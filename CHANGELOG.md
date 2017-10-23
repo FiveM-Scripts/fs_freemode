@@ -1,6 +1,12 @@
 # Changelog    
 All notable changes to this project will be documented in this file.
 
+## v1.3.0
+- Added caddy's and peds inside the bunker.
+- Added MOC to the bunker.
+- Changed money configuration to convars.
+- Changed resource manifest version to `05cfa83c-a124-4cfa-a768-c24a5811d8f9`.
+
 ## v1.2.2
 - Small fix for updater.
 
