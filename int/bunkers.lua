@@ -1,3 +1,24 @@
+local function LoadBunkerWorkers()
+	local Workers = {
+	    {x=885.606, y=-3199.558, z=-98.196, heading= 33.884},
+	    {x= 893.9716, y= -3201.912, z= -98.19622, heading= 33.884},
+	    {x= 889.994, y= -3201.95, z= -98.1963, heading= 100.0}
+	}
+	
+	RequestModel(GetHashKey("s_m_m_scientist_01"))
+	while not HasModelLoaded(GetHashKey("s_m_m_scientist_01")) do
+		Wait(0)
+	end
+
+	for k,v in pairs(Workers) do
+		worker = CreatePed(6, GetHashKey("s_m_m_scientist_01"), v.x, v.y, v.z, v.heading, true, false)
+		SetBlockingOfNonTemporaryEvents(worker, true)
+		SetEntityInvincible(worker, true)
+	end
+
+	SetModelAsNoLongerNeeded(GetHashKey("s_m_m_scientist_01"))
+end
+
 local function LoadBunkerPed()
 	RequestModel(GetHashKey("MP_M_WeapExp_01"))
 	while not HasModelLoaded(GetHashKey("MP_M_WeapExp_01")) do
@@ -7,6 +28,7 @@ local function LoadBunkerPed()
 	bunkerPed = CreatePed(26, GetHashKey("MP_M_WeapExp_01"), 834.137, -3244.638, -98.699, -18.0, true, false)	
 	SetBlockingOfNonTemporaryEvents(bunkerPed, true)	
 	SetAmbientVoiceName(bunkerPed, "MALE_GENERICWORKER_R2PVG")
+	SetEntityInvincible(bunkerPed, true)
 
 	SetModelAsNoLongerNeeded(GetHashKey("MP_M_WeapExp_01"))
 end
@@ -52,7 +74,7 @@ local function LoadBunkerTruck()
 		RequestModel(GetHashKey("trailerlarge"))
 		RequestModel(GetHashKey("hauler2"))
 
-		if not DoesEntityExist(mocTruck) and not DoesEntityExist(mocTrailer) then			
+		if not DoesEntityExist(mocTruck) and not DoesEntityExist(mocTrailer) then
 			while not HasModelLoaded(GetHashKey("trailerlarge"))do
 				Wait(0)
 			end
@@ -158,6 +180,7 @@ Citizen.CreateThread(function()
 
 				LoadBunkerCars()
 				LoadBunkerPed()
+				LoadBunkerWorkers()
 				Wait(1000)
 				DoScreenFadeIn(1000)
 			end
