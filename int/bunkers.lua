@@ -95,17 +95,24 @@ local function LoadMocInt()
 end
 
 local function LoadBunkerPed()
-	RequestModel(GetHashKey("MP_M_WeapExp_01"))
-	while not HasModelLoaded(GetHashKey("MP_M_WeapExp_01")) do
-		Wait(0)
+	if 	not DoesEntityExist(bunkerPed) then
+		RequestModel(GetHashKey("MP_M_WeapExp_01"))
+		while not HasModelLoaded(GetHashKey("MP_M_WeapExp_01")) do
+			Wait(0)
+		end
+
+		bunkerPed = CreatePed(26, GetHashKey("MP_M_WeapExp_01"), 834.137, -3244.638, -98.699, -18.0, true, false)	
+		SetNetworkIdExistsOnAllMachines(bunkerPed, 0)
+		NetworkUnregisterNetworkedEntity(bunkerPed)
+		NetworkSetEntityVisibleToNetwork(bunkerPed, 0)
+
+
+		SetBlockingOfNonTemporaryEvents(bunkerPed, true)	
+		SetAmbientVoiceName(bunkerPed, "MALE_GENERICWORKER_R2PVG")
+		SetEntityInvincible(bunkerPed, true)
+
+		SetModelAsNoLongerNeeded(GetHashKey("MP_M_WeapExp_01"))
 	end
-
-	bunkerPed = CreatePed(26, GetHashKey("MP_M_WeapExp_01"), 834.137, -3244.638, -98.699, -18.0, true, false)	
-	SetBlockingOfNonTemporaryEvents(bunkerPed, true)	
-	SetAmbientVoiceName(bunkerPed, "MALE_GENERICWORKER_R2PVG")
-	SetEntityInvincible(bunkerPed, true)
-
-	SetModelAsNoLongerNeeded(GetHashKey("MP_M_WeapExp_01"))
 end
 
 local function LoadBunkerInterior()
@@ -232,7 +239,80 @@ local function LoadBunkerCars()
      end
  end
 
+ local function PrintMenu()
+ 	if WarMenu.IsMenuOpened('gunMod') then
+ 		if WarMenu.MenuButton('Cutomize Cab', 'customCab') then
+
+ 		end
+
+ 		if WarMenu.MenuButton('Cutomize Trailer', 'customTrailer') then
+
+ 		end
+
+ 		if WarMenu.MenuButton('Exit') then
+
+ 		end 
+ 		WarMenu.Display()
+
+ 		elseif WarMenu.IsMenuOpened('customCab') then
+ 			if WarMenu.MenuButton('Armor', 'gunMod') then
+                --
+            elseif WarMenu.MenuButton('Breakes', 'gunMod') then
+            	--
+            elseif WarMenu.MenuButton('Engine', 'gunMod') then
+            	--
+            elseif WarMenu.MenuButton('Horn', 'gunMod') then
+            	--
+            elseif WarMenu.MenuButton('Lights', 'gunMod') then
+            	--
+            elseif WarMenu.MenuButton('Respray', 'gunMod') then            	
+            	--
+            elseif WarMenu.MenuButton('Suspension', 'gunMod') then
+            	--
+            elseif WarMenu.MenuButton('Transmission', 'gunMod') then
+            	--
+            elseif WarMenu.MenuButton('Turbo', 'gunMod') then
+            	--
+            elseif WarMenu.MenuButton('Wheels', 'gunMod') then
+            	-- 
+            elseif WarMenu.MenuButton('Suspension', 'gunMod') then
+            	-- 
+            end
+
+            WarMenu.Display()
+            
+            elseif WarMenu.IsMenuOpened('customTrailer') then
+            if WarMenu.Button('Livery') then
+            	--
+            elseif WarMenu.MenuButton('Plate', 'gunMod') then
+            	-- 
+            elseif WarMenu.MenuButton('Respray', 'gunMod') then
+            	--
+            elseif WarMenu.MenuButton('Weapons', 'gunMod') then
+            	--
+            end
+            WarMenu.Display()
+        elseif IsControlJustReleased(0, 38) then
+            WarMenu.OpenMenu('gunMod')
+        end 	
+ end
+
 Citizen.CreateThread(function()
+	WarMenu.CreateMenu('gunMod', 'gunmod')
+	WarMenu.CreateSubMenu('customCab', 'gunMod')
+	WarMenu.CreateSubMenu('customTrailer', 'gunMod')
+
+	WarMenu.SetTitleColor('gunMod', 255, 255, 255)
+	WarMenu.SetTitleColor('customCab', 255, 255, 255)
+	WarMenu.SetTitleColor('customTrailer', 255, 255, 255)
+
+	WarMenu.SetSubTitle('gunMod', i18n.translate('bunker_vehicle_workshop_title'))
+	WarMenu.SetSubTitle('customCab', i18n.translate('categories'))
+	WarMenu.SetSubTitle('customTrailer', i18n.translate('categories'))
+	
+	WarMenu.SetTitleBackgroundColor('gunMod', 255, 255, 255)
+	WarMenu.SetTitleBackgroundColor('customCab', 255, 255, 255)
+	WarMenu.SetTitleBackgroundColor('customTrailer', 255, 255, 255)
 	while true do
 		Wait(0)
 		local playerCoords = GetEntityCoords(GetPlayerPed(-1), true)
@@ -270,9 +350,14 @@ Citizen.CreateThread(function()
 			DisableControlAction(0, 24)
 			DisableControlAction(0, 25)
 
+			if GetDistanceBetweenCoords(playerCoords, 834.137, -3244.638, -98.699) <= 3.0 then
+				TriggerEvent("fs_freemode:displayHelp", i18n.translate("enter_bunker_workshop"))
+				PrintMenu()
+			end
+
 			 --this draws the marker to enter the MOC
 			DrawMarker(1, 848.4579, -3242.338, -99.69917, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, 0.52, 0, 255, 255, 150, 0, 0, 2, 0, 0, 0, false)
-			if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1), true), 848.4579, -3242.338, -99.69917) < 5.8 then
+			if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1), true), 848.4579, -3242.338, -99.69917) < 2.8 then
 				TriggerEvent("fs_freemode:displayHelp", i18n.translate("enter_moc")) 
 				if IsControlPressed(0, 38) then
 					DoScreenFadeOut(1000)

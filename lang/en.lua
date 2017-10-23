@@ -1,5 +1,8 @@
 i18n.importData("en", {
   welcome_message = "Welcome~g~ ",
+  categories = "Categories",
+  enter_bunker_workshop = "Press ~INPUT_CONTEXT~ to access the Bunker Vehicle Workshop.",
+  bunker_vehicle_workshop_title = "Bunker Vehicle Workshop",
   enter_bunker = "Press ~INPUT_CONTEXT~ to enter the bunker",
   exit_bunker = "Press ~INPUT_CONTEXT~ to exit the bunker",
   enter_moc = "Press ~INPUT_CONTEXT~ to enter the MOC",
