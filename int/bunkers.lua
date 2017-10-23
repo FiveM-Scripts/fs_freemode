@@ -1,3 +1,16 @@
+local function LoadBunkerPed()
+	RequestModel(GetHashKey("MP_M_WeapExp_01"))
+	while not HasModelLoaded(GetHashKey("MP_M_WeapExp_01")) do
+		Wait(0)
+	end
+
+	bunkerPed = CreatePed(26, GetHashKey("MP_M_WeapExp_01"), 834.137, -3244.638, -98.699, -18.0, true, false)	
+	SetBlockingOfNonTemporaryEvents(bunkerPed, true)	
+	SetAmbientVoiceName(bunkerPed, "MALE_GENERICWORKER_R2PVG")
+
+	SetModelAsNoLongerNeeded(GetHashKey("MP_M_WeapExp_01"))
+end
+
 local function LoadBunkerInterior()
 	RequestIpl("grdlc_int_01_shell")
 	RequestIpl("gr_grdlc_int_01")
@@ -36,39 +49,39 @@ local function LoadBunkerTruck()
 	 SetEntityCollision(mocTrailer, true, false)
 
 	else
-		if not DoesEntityExist(mocTruck) and not DoesEntityExist(mocTrailer) then
 		RequestModel(GetHashKey("trailerlarge"))
 		RequestModel(GetHashKey("hauler2"))
-				
-		while not HasModelLoaded(GetHashKey("trailerlarge"))do
-			Wait(1)
-		end
 
-		while not HasModelLoaded(GetHashKey("hauler2"))do
-			Wait(0)
-		end		
+		if not DoesEntityExist(mocTruck) and not DoesEntityExist(mocTrailer) then			
+			while not HasModelLoaded(GetHashKey("trailerlarge"))do
+				Wait(0)
+			end
 
-		if HasModelLoaded(GetHashKey("hauler2")) and HasModelLoaded(GetHashKey("trailerlarge")) then
-			mocTruck = CreateVehicle(GetHashKey("hauler2"), 834.2265, -3234.795, -98.4865, 62.28, true, false)		
-			SetNetworkIdExistsOnAllMachines(NetworkGetNetworkIdFromEntity(mocTruck), 0)
-			NetworkSetEntityVisibleToNetwork(mocTruck, 0)
+			while not HasModelLoaded(GetHashKey("hauler2"))do
+				Wait(0)
+			end
 
-			SetVehicleOnGroundProperly(mocTruck)
-			SetVehicleDoorsLocked(mocTruck, 2)
-			SetEntityProofs(mocTruck, true, true, true, true, true, false, 0, false)
+			if HasModelLoaded(GetHashKey("hauler2")) and HasModelLoaded(GetHashKey("trailerlarge")) then
+				mocTruck = CreateVehicle(GetHashKey("hauler2"), 834.2265, -3234.795, -98.4865, 62.28, true, false)		
+				SetNetworkIdExistsOnAllMachines(NetworkGetNetworkIdFromEntity(mocTruck), 0)
+				NetworkSetEntityVisibleToNetwork(mocTruck, 0)
 
-			mocTrailer = CreateVehicle(GetHashKey("trailerlarge"), 842.6267, -3239.217, -96.8499, 62.28, true, false)
-			SetNetworkIdExistsOnAllMachines(NetworkGetNetworkIdFromEntity(mocTrailer), 0)
-			NetworkSetEntityVisibleToNetwork(mocTrailer, 0)
+				SetVehicleOnGroundProperly(mocTruck)
+				SetVehicleDoorsLocked(mocTruck, 2)
+				SetEntityProofs(mocTruck, true, true, true, true, true, false, 0, false)
 
-			SetEntityCollision(mocTrailer, true, false)
-			AttachVehicleToTrailer(mocTruck, mocTrailer, 1.0)
+				mocTrailer = CreateVehicle(GetHashKey("trailerlarge"), 842.6267, -3239.217, -96.8499, 62.28, true, false)
+				SetNetworkIdExistsOnAllMachines(NetworkGetNetworkIdFromEntity(mocTrailer), 0)
+				NetworkSetEntityVisibleToNetwork(mocTrailer, 0)
+				SetEntityCollision(mocTrailer, true, false)
+
+				AttachVehicleToTrailer(mocTruck, mocTrailer, 1.0)
+			end
 
 			SetModelAsNoLongerNeeded(GetHashKey("hauler2"))
 			SetModelAsNoLongerNeeded(GetHashKey("trailerlarge"))
 		end
 	end
-  end
 end
 
 local function LoadBunkerCars()
@@ -143,11 +156,12 @@ Citizen.CreateThread(function()
 
 				Citizen.Wait(1000)
 
-				LoadBunkerTruck()
 				LoadBunkerCars()
-				Wait(1000)		
+				LoadBunkerPed()
+				Wait(1000)
 				DoScreenFadeIn(1000)
 			end
+			LoadBunkerTruck()
 		end
 
 		if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 894.5, -3245.75, -98.27, true) <= 5.0 then
