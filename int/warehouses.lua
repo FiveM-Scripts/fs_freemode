@@ -5,7 +5,7 @@ Citizen.CreateThread(function()
 
 		DrawMarker(1, 1312.100, 4362.241, 40.855-1.0001, 0, 0, 0, 0, 0, 0, 2.0, 3.0, 2.0, 13, 232, 255, 155, 0, 0, 2, 0, 0, 0, 0)
 		if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 1312.100, 4362.241, 40.855, true) <= 5.0 then
-			TriggerEvent("fs_freemode:displayHelp", "Press ~INPUT_CONTEXT~ to enter the warehouse")
+			TriggerEvent("fs_freemode:displayHelp", i18n.translate("enter_warehouse"))
 			if IsControlJustPressed(0, 38) then
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
@@ -62,7 +62,7 @@ Citizen.CreateThread(function()
 		end
 
 		if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 1065.430, -3182.969, -39.163, true) <= 5.0 then
-			TriggerEvent("fs_freemode:displayHelp", "Press ~INPUT_CONTEXT~ to exit the warehouse")
+			TriggerEvent("fs_freemode:displayHelp", i18n.translate("exit_warehouse"))
 			if IsControlJustPressed(0, 38) then
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
@@ -76,7 +76,7 @@ Citizen.CreateThread(function()
 
 		DrawMarker(1,387.636, 3585.846, 33.292-1.0001, 0, 0, 0, 0, 0, 0, 2.0, 3.0, 2.0, 13, 232, 255, 155, 0, 0, 2, 0, 0, 0, 0)
 		if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 387.636, 3585.846, 33.292, true) <= 5.0 then
-			TriggerEvent("fs_freemode:displayHelp", "Press ~INPUT_CONTEXT~ to enter the warehouse")
+			TriggerEvent("fs_freemode:displayHelp", i18n.translate("enter_warehouse"))
 			if IsControlJustPressed(0, 38) then
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
@@ -105,7 +105,7 @@ Citizen.CreateThread(function()
 	
 
 		if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 1088.803, -3188.257, -38.993, true) <= 1.0 then
-			TriggerEvent("fs_freemode:displayHelp", "Press ~INPUT_CONTEXT~ to exit the warehouse")
+			TriggerEvent("fs_freemode:displayHelp", i18n.translate("exit_warehouse"))
 			if IsControlJustPressed(0, 38) then
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
@@ -118,7 +118,7 @@ Citizen.CreateThread(function()
 
 		DrawMarker(1, 1180.180, -3113.763, 6.028-1.0001, 0, 0, 0, 0, 0, 0, 2.0, 3.0, 2.0, 13, 232, 255, 155, 0, 0, 2, 0, 0, 0, 0)
 		if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 1181.720, -3114.252, 6.028, true) <= 2.0 then
-			TriggerEvent("fs_freemode:displayHelp", "Press ~INPUT_CONTEXT~ to enter the warehouse")
+			TriggerEvent("fs_freemode:displayHelp", i18n.translate("enter_warehouse"))
 			if IsControlJustPressed(0, 38) then
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
@@ -136,7 +136,7 @@ Citizen.CreateThread(function()
 		end
 		
 		if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 996.933, -3200.605, -36.394, true) <= 1.0 then
-			TriggerEvent("fs_freemode:displayHelp", "Press ~INPUT_CONTEXT~ to exit the warehouse")
+			TriggerEvent("fs_freemode:displayHelp", i18n.translate("exit_warehouse"))
 			if IsControlJustPressed(0, 38) then
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
@@ -148,7 +148,7 @@ Citizen.CreateThread(function()
 		end		
 
 	if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 958.50, -1586.30, 30.0, true) <= 3.0 then
-		TriggerEvent("fs_freemode:displayHelp", "Press ~INPUT_CONTEXT~ to enter the warehouse")
+		TriggerEvent("fs_freemode:displayHelp", i18n.translate("enter_warehouse"))
 			if IsControlJustPressed(0, 38) then
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
@@ -159,7 +159,7 @@ Citizen.CreateThread(function()
 			end
 		end
 	if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 1087.442, -3099.381, -39.000, true) <= 3.0 then
-		TriggerEvent("fs_freemode:displayHelp", "Press ~INPUT_CONTEXT~ to exit the warehouse")
+		TriggerEvent("fs_freemode:displayHelp", i18n.translate("exit_warehouse"))
 			if IsControlJustPressed(0, 38) then
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
@@ -171,7 +171,7 @@ Citizen.CreateThread(function()
 		end		
 
 	if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 758.885, -909.322, 25.433, true) <= 3.0 then
-		TriggerEvent("fs_freemode:displayHelp", "Press ~INPUT_CONTEXT~ to enter the warehouse")
+		TriggerEvent("fs_freemode:displayHelp", i18n.translate("enter_warehouse"))
 			if IsControlJustPressed(0, 38) then
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
@@ -182,7 +182,7 @@ Citizen.CreateThread(function()
 			end
 		end
 	if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 1048.121, -3097.397, -39.000, true) <= 2.0 then
-		TriggerEvent("fs_freemode:displayHelp", "Press ~INPUT_CONTEXT~ to exit the warehouse")
+		TriggerEvent("fs_freemode:displayHelp", i18n.translate("exit_warehouse"))
 			if IsControlJustPressed(0, 38) then
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
@@ -194,7 +194,7 @@ Citizen.CreateThread(function()
 		end
 
 	if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 713.872, -719.268, 26.073, true) <= 3.0 then
-		TriggerEvent("fs_freemode:displayHelp", "Press ~INPUT_CONTEXT~ to enter the warehouse")
+		TriggerEvent("fs_freemode:displayHelp", i18n.translate("enter_warehouse"))
 			if IsControlJustPressed(0, 38) then
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
@@ -205,7 +205,7 @@ Citizen.CreateThread(function()
 			end
 		end
 	if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 1026.813, -3101.653, -39.000, true) <= 2.0 then
-		TriggerEvent("fs_freemode:displayHelp", "Press ~INPUT_CONTEXT~ to exit the warehouse")
+		TriggerEvent("fs_freemode:displayHelp", i18n.translate("exit_warehouse"))
 			if IsControlJustPressed(0, 38) then
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
@@ -217,7 +217,7 @@ Citizen.CreateThread(function()
 		end
 
 		if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 639.965, 2773.929, 42.013, true) <= 5.0 then
-			TriggerEvent("fs_freemode:displayHelp", "Press ~INPUT_CONTEXT~ to enter the warehouse")
+			TriggerEvent("fs_freemode:displayHelp", i18n.translate("enter_warehouse"))
 			if IsControlJustPressed(0, 38) then
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
@@ -258,7 +258,7 @@ Citizen.CreateThread(function()
 			end
 		end
 	if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 1118.683, -3193.319, -40.391, true) <= 2.0 then
-		TriggerEvent("fs_freemode:displayHelp", "Press ~INPUT_CONTEXT~ to exit the warehouse")
+		TriggerEvent("fs_freemode:displayHelp", i18n.translate("exit_warehouse"))
 			if IsControlJustPressed(0, 38) then
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
@@ -270,7 +270,7 @@ Citizen.CreateThread(function()
 		end
 
 		if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 378.646, -834.4833, 29.292, true) <= 3.0 then
-			TriggerEvent("fs_freemode:displayHelp", "Press ~INPUT_CONTEXT~ to enter the warehouse")
+			TriggerEvent("fs_freemode:displayHelp", i18n.translate("enter_warehouse"))
 			if IsControlJustPressed(0, 38) then
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
@@ -300,7 +300,7 @@ Citizen.CreateThread(function()
 			end
 		end
 	if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 1173.700, -3196.799, -39.008, true) <= 2.0 then
-		TriggerEvent("fs_freemode:displayHelp", "Press ~INPUT_CONTEXT~ to exit the warehouse")
+		TriggerEvent("fs_freemode:displayHelp", i18n.translate("exit_warehouse"))
 			if IsControlJustPressed(0, 38) then
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)

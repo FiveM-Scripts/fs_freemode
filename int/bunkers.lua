@@ -5,7 +5,7 @@ Citizen.CreateThread(function()
 
 		DrawMarker(1, 2107.249, 3324.453, 45.377-1.0001, 0, 0, 0, 0, 0, 0, 4.0, 4.0, 0.25, 240, 200, 80, 150, 0, 0, 1, 0, 0, 0, 0)
 		if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 2107.249, 3324.453, 45.377, true) <= 3.0 then
-			TriggerEvent("fs_freemode:displayHelp", "Press ~INPUT_CONTEXT~ to enter the bunker")
+			TriggerEvent("fs_freemode:displayHelp", i18n.translate("enter_bunker"))
 			if IsControlJustPressed(0, 38) then
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
@@ -43,7 +43,7 @@ Citizen.CreateThread(function()
 		end
 
 		if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 894.5, -3245.75, -98.27, true) <= 5.0 then
-			TriggerEvent("fs_freemode:displayHelp", "Press ~INPUT_CONTEXT~ to exit the bunker")
+			TriggerEvent("fs_freemode:displayHelp", i18n.translate("exit_bunker"))
 			if IsControlJustPressed(0, 38) then
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
