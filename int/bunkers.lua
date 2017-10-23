@@ -272,27 +272,33 @@ Citizen.CreateThread(function()
 
 			 --this draws the marker to enter the MOC
 			DrawMarker(1, 848.4579, -3242.338, -99.69917, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, 0.52, 0, 255, 255, 150, 0, 0, 2, 0, 0, 0, false)
-			if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1), true), 848.4579, -3242.338, -99.69917) < 5.8 and IsControlPressed(0, 38) then
-				DoScreenFadeOut(1000)
-				Citizen.Wait(1500)
-				
-				SetEntityCoords(GetPlayerPed(-1), 1103.5620, -3000.00, -40.00)
+			if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1), true), 848.4579, -3242.338, -99.69917) < 5.8 then
+				TriggerEvent("fs_freemode:displayHelp", i18n.translate("enter_moc")) 
+				if IsControlPressed(0, 38) then
+					DoScreenFadeOut(1000)
+					Citizen.Wait(1500)
 
-				Wait(1500)
-				DoScreenFadeIn(1500)
+					SetEntityCoords(GetPlayerPed(-1), 1103.5620, -3000.00, -40.00)
+
+					Wait(1500)
+					DoScreenFadeIn(1500)
+				end
 			end
 		end
 
 		--this draws the marker to return to the bunker from "MOC"
 		DrawMarker(1, 1102.645, -2986.465, -39.99833, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, 0.52, 0, 255, 255, 150, 0, 0, 2, 0, 0, 0, false )
-		if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1), true), 1102.645, -2986.465, -38.99833) < 3.8 and IsControlPressed(0, 38) then
-			DoScreenFadeOut(1000)
-			Citizen.Wait(1500)			
-			
-			SetEntityCoords(GetPlayerPed(-1), 885.982, -3245.716, -98.278)
+		if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1), true), 1102.645, -2986.465, -38.99833) < 3.8 then
+			TriggerEvent("fs_freemode:displayHelp", i18n.translate("exit_moc"))
+			if IsControlPressed(0, 38) then
+				DoScreenFadeOut(1000)
+				Citizen.Wait(1500)			
 
-			Wait(1500)
-			DoScreenFadeIn(1500)
+				SetEntityCoords(GetPlayerPed(-1), 885.982, -3245.716, -98.278)
+
+				Wait(1500)
+				DoScreenFadeIn(1500)
+			end
 		end
 
 		if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 894.5, -3245.75, -98.27, true) <= 5.0 then
@@ -300,7 +306,7 @@ Citizen.CreateThread(function()
 			if IsControlJustPressed(0, 38) then
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
-				
+
 				RemoveBlip(ExitBlip)
 				RemoveIpl("grdlc_int_01_shell")
 				RemoveIpl("gr_grdlc_int_01")
