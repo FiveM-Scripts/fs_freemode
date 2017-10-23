@@ -19,6 +19,81 @@ local function LoadBunkerWorkers()
 	SetModelAsNoLongerNeeded(GetHashKey("s_m_m_scientist_01"))
 end
 
+
+local function LoadMocInt()
+	if not HasModelLoaded(GetHashKey("gr_prop_gr_trailer_monitor_03")) then 
+		RequestModel(GetHashKey("gr_prop_gr_trailer_monitor_03"))
+		while not HasModelLoaded(GetHashKey("gr_prop_gr_trailer_monitor_03")) do
+			Wait(0)
+		end
+	end
+
+	if not HasModelLoaded(-2083549178) then
+		RequestModel(-2083549178)
+		while not HasModelLoaded(-2083549178) do
+			Wait(0)
+		end
+	end
+
+	if DoesEntityExist(GetClosestObjectOfType(1102.596, -3001.493,-40.00575, 2.0, -2083549178, 0, 0, 0)) then 
+		mocIntCarMod = GetClosestObjectOfType(1102.596, -3001.493,-40.00575, 2.0, -2083549178, 0, 0, 0)
+		SetObjectTextureVariant(mocIntCarMod, 7)
+	end
+
+	if not DoesEntityExist(mocIntCarMod) then
+		mocIntCarMod = CreateObjectNoOffset(-2083549178, 1102.596, -3001.493,-40.00575, 0, 1, 0)
+		SetEntityRotation(mocIntCarMod, -0, -0, -0.1030985)
+		SetEntityHeading(mocIntCarMod, 359.89691162109)	   
+		FreezeEntityPosition(mocIntCarMod, 1)
+		SetEntityCollision(mocIntCarMod, true, true)
+		SetObjectTextureVariant(mocIntCarMod, 7)
+	else
+		SetObjectTextureVariant(mocIntCarMod, 7)
+	end
+
+	if not HasModelLoaded(-2104782239) then
+		RequestModel(-2104782239)
+	end
+
+	if DoesEntityExist(GetClosestObjectOfType(1102.572, -3009.447, -39.98857, 2.0, -2104782239, 0, 0, 0)) then 
+		mocIntCommand = GetClosestObjectOfType(1102.572, -3009.447, -39.98857, 2.0, -2104782239, 0, 0, 0)
+	end
+
+	if not DoesEntityExist(mocIntCommand) then
+		mocIntCommand = CreateObjectNoOffset(-2104782239, 1102.572, -3009.447, -39.98857, 0, 1, 0)
+		SetEntityRotation(mocIntCommand, -0, -0, -0.2033111)
+		SetEntityHeading(mocIntCommand, 359.79669189453)	   
+		FreezeEntityPosition(mocIntCommand, 1)
+
+		SetEntityCollision(mocIntCommand, true, true)
+		SetObjectTextureVariant(mocIntCommand, 7)
+	else 
+		SetObjectTextureVariant(mocIntCommand, 7)
+	end
+
+	if DoesEntityExist(GetClosestObjectOfType(1102.189, -3009.409, -39.97825, 2.0, -901846631, 0, 0, 0)) then 
+		mocIntClosedDoor = GetClosestObjectOfType(1102.189, -3009.409, -39.97825, 2.0, -901846631, 0, 0, 0)
+	end
+
+	if not DoesEntityExist(mocIntClosedDoor) then
+		mocIntClosedDoor = CreateObjectNoOffset(-901846631, 1102.189, -3009.409, -39.97825, 0, 1, 0)
+		SetEntityRotation(mocIntClosedDoor, -0, -0, -179.9231)
+		SetEntityHeading(mocIntClosedDoor, 180.07693481445)	   
+		FreezeEntityPosition(mocIntClosedDoor, 1)
+		SetEntityCollision(mocIntClosedDoor, true, true)
+		SetObjectTextureVariant(mocIntClosedDoor, 7)
+	else 
+		SetObjectTextureVariant(mocIntClosedDoor, 7)
+	end
+
+	if not DoesEntityExist(mocMonitor3) then
+		mocMonitor3 = CreateObjectNoOffset(GetHashKey("gr_prop_gr_trailer_monitor_03"), 1106.366, -3008.03, -40.01062, 0, 1, 0)     	   
+		SetEntityRotation(mocMonitor3, -0, -0, 97.5754)
+		SetEntityHeading(mocMonitor3, 97.575401306152)
+		FreezeEntityPosition(mocMonitor3, 1)
+	end
+end
+
 local function LoadBunkerPed()
 	RequestModel(GetHashKey("MP_M_WeapExp_01"))
 	while not HasModelLoaded(GetHashKey("MP_M_WeapExp_01")) do
@@ -185,6 +260,27 @@ Citizen.CreateThread(function()
 				DoScreenFadeIn(1000)
 			end
 			LoadBunkerTruck()
+			LoadMocInt()
+		end
+
+		if GetInteriorFromEntity(GetPlayerPed()) == 258561 then
+			 --this draws the marker to enter the MOC
+			DrawMarker(1, 848.4579, -3242.338, -99.69917, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, 0.52, 0, 255, 255, 150, 0, 0, 2, 0, 0, 0, false)
+			if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1), true), 848.4579, -3242.338, -99.69917) < 5.8 and IsControlPressed(0, 38) then
+				DoScreenFadeOut(1000)
+				Citizen.Wait(1500)
+				
+				SetEntityCoords(GetPlayerPed(-1), 1103.5620, -3000.00, -40.00)
+
+				Wait(1500)
+				DoScreenFadeIn(1500)
+			end
+		end
+
+		--this draws the marker to return to the bunker from "MOC"
+		DrawMarker(1, 1102.645, -2986.465, -39.99833, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, 0.52, 0, 255, 255, 150, 0, 0, 2, 0, 0, 0, false )
+		if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1), true), 1102.645, -2986.465, -38.99833) < 3.8 and IsControlPressed(0, 38) then
+			SetEntityCoords(GetPlayerPed(-1), 885.982, -3245.716, -98.278)
 		end
 
 		if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 894.5, -3245.75, -98.27, true) <= 5.0 then
