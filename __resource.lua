@@ -22,6 +22,7 @@ client_scripts {
   'client.lua',
   'int/bunkers.lua',
   'int/comedy.lua',
+  'int/office.lua',
   'int/weapons.lua',
   'int/warehouses.lua',
   'ext/locations.lua',
