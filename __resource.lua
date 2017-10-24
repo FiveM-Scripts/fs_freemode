@@ -18,6 +18,7 @@ client_scripts {
   'lang/en.lua',
   'libs/events.lua',
   'libs/scoreboard.lua',
+  'libs/warmenu.lua',
   'config.lua',
   'client.lua',
   'int/bunkers.lua',
