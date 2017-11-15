@@ -52,7 +52,7 @@ Citizen.CreateThread(function()
       end
 
       if doordist < 4 then
-        TriggerEvent("fs_freemode:displayHelp", "Press ~INPUT_CONTEXT~ to browse weapons")
+        TriggerEvent("fs_freemode:displayHelp", i18n.translate("browse_weapons"))
         if IsControlJustPressed(1, 46) then
           TriggerEvent("fivem-stores:weapon-menu:show", true)
         end
@@ -66,7 +66,6 @@ end)
 RegisterNetEvent("fivem-stores:SpawnWeapon")
 AddEventHandler("fivem-stores:SpawnWeapon", function(weapon)
   Citizen.CreateThread(function()
-  Citizen.Trace("i just bought a weapon\n")
   GiveWeaponToPed(GetPlayerPed(-1), GetHashKey(weapon), 2000, false)
   PlaySoundFrontend(-1, "WEAPON_PURCHASE", "HUD_AMMO_SHOP_SOUNDSET", 1)
   end)

@@ -1,11 +1,11 @@
-local version = 'v1.2.2'
+local version = 'v1.3.0'
 
 TriggerEvent("es:setDefaultSettings", {
 	debugInformation = false,
-	moneyIcon = Setup.Currency,
-	nativeMoneySystem = Setup.NativeMoney,
-	pvpEnabled = Setup.pvp,
-	startingCash = Setup.Money,
+	moneyIcon = GetConvar('money_currency', "$"),
+	nativeMoneySystem = GetConvar('native_display', true),
+	pvpEnabled = GetConvar('pvp', true),
+	startingCash = GetConvar('default_cash', 5000),
 	commandDelimeter= "/"
 })
 
