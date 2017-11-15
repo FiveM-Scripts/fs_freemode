@@ -1,11 +1,12 @@
 # Changelog    
 All notable changes to this project will be documented in this file.
 
-## v1.3.0
+## v1.2.3
+- Added language support.
 - Added caddy's and peds inside the bunker.
-- Added MOC to the bunker.
-- Changed money configuration to convars.
+- Added first progress on MOC to the bunker.
 - Changed resource manifest version to `05cfa83c-a124-4cfa-a768-c24a5811d8f9`.
+- Fixed error messages on linux build servers.
 
 ## v1.2.2
 - Small fix for updater.
@@ -16,8 +17,8 @@ All notable changes to this project will be documented in this file.
 ## v1.2 
 - Added meth, weed, cocaine warehouses.
 - Added Gunrunning DLC weapons.
-- Added Finance and Felony warehouses
-- Added bunker interior
+- Added Finance and Felony warehouses.
+- Added bunker interior.
 
 ## v1.1 - 19/09/2017
 
