@@ -15,9 +15,7 @@ end)
 
 RegisterServerEvent("fs_freemode:playerSpawned")
 AddEventHandler("fs_freemode:playerSpawned", function(spawn)
-	TriggerEvent('es:getPlayerFromId', source, function(user)
-		TriggerEvent('fs_freemode:loadWeapons', source)
-	end)
+        TriggerEvent('fs_freemode:loadWeapons', source)
 end)
 
 RegisterServerEvent("fs_freemode:loadWeapons")
