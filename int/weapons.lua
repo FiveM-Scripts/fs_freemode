@@ -72,11 +72,9 @@ AddEventHandler("fivem-stores:SpawnWeapon", function(weapon)
   end)
 end)
 
-
 RegisterNetEvent("fivem-stores:giveWeapon")
 AddEventHandler("fivem-stores:giveWeapon", function(weapon, WeaponName)
   Citizen.CreateThread(function()
-    Citizen.Trace("i just bought a weapon\n")
     GiveWeaponToPed(GetPlayerPed(-1), GetHashKey(weapon), 2000, false)
     PlaySoundFrontend(-1, "WEAPON_PURCHASE", "HUD_AMMO_SHOP_SOUNDSET", 1)
 
@@ -86,35 +84,35 @@ AddEventHandler("fivem-stores:giveWeapon", function(weapon, WeaponName)
 end)
 
 Citizen.CreateThread(function()
-  while true do
-    Citizen.Wait(0)
-    if WeaponPurchased then
-      scaleform = RequestScaleformMovie("MP_BIG_MESSAGE_FREEMODE")
-      if HasScaleformMovieLoaded(scaleform) then
-        PushScaleformMovieFunction(scaleform, "SHOW_WEAPON_PURCHASED")
-
-        BeginTextComponent("STRING")
-        Citizen.InvokeNative(0x6C188BE134E074AA, "Weapon Purchased")
-        EndTextComponent()
-
-        BeginTextComponent("STRING")
-        Citizen.InvokeNative(0x6C188BE134E074AA, tostring(WeaponNamePurchased))
-        EndTextComponent()
-
-        PopScaleformMovieFunctionVoid()
-        DrawScaleformMovieFullscreen(scaleform, 255, 255, 255, 255)
-        PrintMe = true
+  local function WeaponMessage()
+    if not HasScaleformMovieLoaded("MP_BIG_MESSAGE_FREEMODE") then
+      purchase = RequestScaleformMovie("MP_BIG_MESSAGE_FREEMODE")
+      while not HasScaleformMovieLoaded(purchase) do
+        Wait(0)
       end
+    end
+
+    PushScaleformMovieFunction(purchase, "SHOW_WEAPON_PURCHASED")
+    PushScaleformMovieFunctionParameterString(i18n.translate("weapons_purchased"))
+    PushScaleformMovieFunctionParameterString(tostring(WeaponNamePurchased))
+
+    PopScaleformMovieFunctionVoid()
+    DrawScaleformMovieFullscreen(purchase, 255, 255, 255, 255)
+  end
+
+  while true do
+    Wait(0)
+    if WeaponPurchased then
+      WeaponMessage()
     end
   end
 end)
 
-
 Citizen.CreateThread(function()
   while true do
     Citizen.Wait(3885)
-    if WeaponPurchased and PrintMe then
-     SetScaleformMovieAsNoLongerNeeded(scaleform)
+    if WeaponPurchased then
+     SetScaleformMovieAsNoLongerNeeded(purchase)
      WeaponPurchased = false
     end
   end
