@@ -18,6 +18,20 @@ AddEventHandler("fs_freemode:playerSpawned", function(spawn)
         TriggerEvent('fs_freemode:loadWeapons', source)
 end)
 
+RegisterServerEvent("fs_freemode:initStats")
+AddEventHandler("fs_freemode:initStats", function()
+	local src = source
+	local function GetStatsData()
+		SetTimeout(3000, function()
+			TriggerEvent('es:getPlayerFromId', src, function(user)
+				TriggerClientEvent('fs_freemode:initStats', src, user.getMoney())
+				end)
+			GetStatsData()
+			end)
+	end
+	GetStatsData()
+end)
+
 RegisterServerEvent("fs_freemode:loadWeapons")
 AddEventHandler("fs_freemode:loadWeapons", function(source)
 	TriggerEvent('es:getPlayerFromId', source, function(user)

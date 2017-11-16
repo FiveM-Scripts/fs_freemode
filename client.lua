@@ -21,7 +21,8 @@ AddEventHandler("playerSpawned", function(spawn)
 		GiveWeaponToPed(player, GetHashKey("WEAPON_PISTOL"), 100, false, true)
 		GiveWeaponToPed(player, GetHashKey("WEAPON_KNIFE"), true, true)
 
-		TriggerServerEvent("fs_freemode:playerSpawned")		
+		TriggerServerEvent("fs_freemode:playerSpawned")
+		TriggerServerEvent("fs_freemode:initStats")
 end)
 
 Citizen.CreateThread(function()
