@@ -13,6 +13,11 @@ AddEventHandler("fs_freemode:displayHelp", function(text)
 	EndTextCommandDisplayHelp(0, 0, 1, -1)
 end)
 
+RegisterNetEvent("fs_freemode:initStats")
+AddEventHandler("fs_freemode:initStats", function(cash)
+	StatSetInt("MP0_WALLET_BALANCE", cash, true)
+end)
+
 RegisterNetEvent("fs_freemode:notify")
 AddEventHandler("fs_freemode:notify", function(icon, type, color, sender, title, text)
 	Citizen.InvokeNative(0x92F0DA1E27DB96DC, tonumber(color))

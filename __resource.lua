@@ -1,6 +1,6 @@
 resource_type 'gametype' { name = 'fs_freemode'}
 
-resource_manifest_version '44febabe-d386-4d18-afbe-5e627f4af937'
+resource_manifest_version '05cfa83c-a124-4cfa-a768-c24a5811d8f9'
 
 dependency 'essentialmode'
 
@@ -11,17 +11,20 @@ files {
 weaponfile 'weapons.xml'
 
 client_scripts {
+  'libs/i18n.lua',
   'bin/System.Xml.net.dll',
   'bin/NativeUI.net.dll',
   'bin/ShopMenu.net.dll',
+  'lang/en.lua',
   'libs/events.lua',
   'libs/scoreboard.lua',
+  'libs/warmenu.lua',
   'config.lua',
   'client.lua',
-  'int/bunkers.lua',
   'int/comedy.lua',
+  'int/office.lua',
   'int/weapons.lua',
-  'int/warehouses',
+  'int/warehouses.lua',
   'ext/locations.lua',
   'ext/pickups.lua',
   'ext/trains.lua'

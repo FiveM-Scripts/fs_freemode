@@ -10,6 +10,7 @@ Setup.WantedMusicDisabled = true
 Setup.WantedHeadDisplay = true
 Setup.VoiceHeadDisplay = true
 Setup.SpawnPickups = true
+Setup.pvp = true
 Setup.debug = false
 
 PickupItems = {

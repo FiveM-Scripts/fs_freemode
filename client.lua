@@ -1,3 +1,5 @@
+i18n.setLang("en")
+
 AddEventHandler('onClientMapStart', function()
 	exports.spawnmanager:setAutoSpawn(true)
 	exports.spawnmanager:forceRespawn()
@@ -10,16 +12,17 @@ AddEventHandler("playerSpawned", function(spawn)
 
 		Citizen.InvokeNative(GetHashKey("ADD_TEXT_ENTRY"), 'FE_THDR_GTAO', Setup.ServerName)
 		if Setup.DisplayWelcomeNotification then
-			TriggerEvent("fs_freemode:notify", "CHAR_SOCIAL_CLUB", 4, 2, Setup.ServerName, false, "Welcome ~g~".. playerName)
+			TriggerEvent("fs_freemode:notify", "CHAR_SOCIAL_CLUB", 4, 2, Setup.ServerName, false, i18n.translate("welcome_message") .. playerName)
 		end
 
 		SetAudioFlag("LoadMPData", true)
 		SetAudioFlag("WantedMusicDisabled", Setup.WantedMusicDisabled)
-		
-		GiveWeaponToPed(player, GetHashKey("WEAPON_PISTOL"), true, true)
+
+		GiveWeaponToPed(player, GetHashKey("WEAPON_PISTOL"), 100, false, true)
 		GiveWeaponToPed(player, GetHashKey("WEAPON_KNIFE"), true, true)
 
-		TriggerServerEvent("fs_freemode:playerSpawned")		
+		TriggerServerEvent("fs_freemode:playerSpawned")
+		TriggerServerEvent("fs_freemode:initStats")
 end)
 
 Citizen.CreateThread(function()

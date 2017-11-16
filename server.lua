@@ -1,4 +1,4 @@
-local version = 'v1.2.2'
+local version = 'v1.2.3'
 
 TriggerEvent("es:setDefaultSettings", {
 	debugInformation = false,
@@ -15,9 +15,29 @@ end)
 
 RegisterServerEvent("fs_freemode:playerSpawned")
 AddEventHandler("fs_freemode:playerSpawned", function(spawn)
-	TriggerEvent('es:getPlayerFromId', source, function(user)
-		TriggerEvent('fs_freemode:loadWeapons', source)
-	end)
+        TriggerEvent('fs_freemode:loadWeapons', source)
+end)
+
+RegisterServerEvent("fs_freemode:initStats")
+AddEventHandler("fs_freemode:initStats", function()
+	local src = source
+	local function GetStatsData()
+		SetTimeout(3000, function()
+			TriggerEvent('es:getPlayers', function(users)
+				for k,v in pairs(users)do
+					if users[k] ~= nil then
+						TriggerEvent('es:getPlayerFromId', src, function(user)
+							TriggerClientEvent('fs_freemode:initStats', src, user.getMoney())
+							end)
+					end
+				end
+			end)
+
+			GetStatsData()
+		end)
+	end
+	
+	GetStatsData()
 end)
 
 RegisterServerEvent("fs_freemode:loadWeapons")

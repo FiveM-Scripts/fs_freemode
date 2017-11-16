@@ -59,6 +59,7 @@ Citizen.CreateThread(function()
     end
   end
 
+  RequestIpl("facelobby") 
   RequestIpl("FIBlobby")
   RequestIpl("v_tunnel_hole")
   RequestIpl("v_tunnel_hole_lod")
