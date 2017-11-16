@@ -3,10 +3,10 @@ All notable changes to this project will be documented in this file.
 
 ## v1.2.3
 - Added language support.
-- Added caddy's and peds inside the bunker.
-- Added first progress on MOC to the bunker.
+- Added money stats to the pause menu.
 - Changed resource manifest version to `05cfa83c-a124-4cfa-a768-c24a5811d8f9`.
-- Fixed error messages on linux build servers.
+- Fixed error messages on linux servers.
+- Fixed an issue that some people reported on discord regarding the update api.
 
 ## v1.2.2
 - Small fix for updater.

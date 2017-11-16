@@ -21,7 +21,6 @@ client_scripts {
   'libs/warmenu.lua',
   'config.lua',
   'client.lua',
-  'int/bunkers.lua',
   'int/comedy.lua',
   'int/office.lua',
   'int/weapons.lua',
