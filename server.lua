@@ -23,12 +23,20 @@ AddEventHandler("fs_freemode:initStats", function()
 	local src = source
 	local function GetStatsData()
 		SetTimeout(3000, function()
-			TriggerEvent('es:getPlayerFromId', src, function(user)
-				TriggerClientEvent('fs_freemode:initStats', src, user.getMoney())
-				end)
-			GetStatsData()
+			TriggerEvent('es:getPlayers', function(users)
+				for k,v in pairs(users)do
+					if users[k] ~= nil then
+						TriggerEvent('es:getPlayerFromId', src, function(user)
+							TriggerClientEvent('fs_freemode:initStats', src, user.getMoney())
+							end)
+					end
+				end
 			end)
+
+			GetStatsData()
+		end)
 	end
+	
 	GetStatsData()
 end)
 
