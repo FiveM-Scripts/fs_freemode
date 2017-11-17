@@ -1,6 +1,9 @@
 # Changelog    
 All notable changes to this project will be documented in this file.
 
+## v1.2.4 
+This update contains a hotfix regarding issue #42, no other changes have been made.
+
 ## v1.2.3
 - Added language support.
 - Added money stats to the pause menu.
