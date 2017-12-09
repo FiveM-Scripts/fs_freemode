@@ -1,6 +1,5 @@
 RegisterServerEvent('fivem-stores:weapon-menu:item-selected')
 AddEventHandler('fivem-stores:weapon-menu:item-selected', function(s)
-	print("Buying a gun")
 	local src = source
 	TriggerEvent('es:getPlayerFromId', src, function(user)
 		local player = user.getIdentifier()

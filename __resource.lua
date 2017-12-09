@@ -30,6 +30,7 @@ client_scripts {
   'ext/trains.lua'
 }
 
+server_script '@mysql-async/lib/MySQL.lua'
 server_scripts {
   'config.lua',
   'database.lua',
