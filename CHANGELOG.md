@@ -1,6 +1,10 @@
 # Changelog    
 All notable changes to this project will be documented in this file.
 
+## v1.3
+- Added mysql-async support.
+- Removed the stats preview since this will get replaced in the future.
+
 ## v1.2.4 
 This update contains a hotfix regarding issue #42, no other changes have been made.
 
