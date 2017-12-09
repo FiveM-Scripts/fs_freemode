@@ -1,4 +1,4 @@
-local version = 'v1.2.4'
+local version = 'v1.3'
 
 TriggerEvent("es:setDefaultSettings", {
 	debugInformation = false,
@@ -16,14 +16,6 @@ end)
 RegisterServerEvent("fs_freemode:playerSpawned")
 AddEventHandler("fs_freemode:playerSpawned", function(spawn)
         TriggerEvent('fs_freemode:loadWeapons', source)
-end)
-
-RegisterServerEvent("fs_freemode:initStats")
-AddEventHandler("fs_freemode:initStats", function()
-	local src = source
-	TriggerEvent('es:getPlayerFromId', src, function(user)
-		TriggerClientEvent('fs_freemode:initStats', src, user.getMoney())
-		end)
 end)
 
 RegisterServerEvent("fs_freemode:loadWeapons")
