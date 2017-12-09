@@ -28,11 +28,12 @@ end)
 
 RegisterServerEvent("fs_freemode:loadWeapons")
 AddEventHandler("fs_freemode:loadWeapons", function(source)
-	TriggerEvent('es:getPlayerFromId', source, function(user)
-	db.getUser(user.getIdentifier(), function(freemodeuser)
-		for i=1, #freemodeuser.weapons do
-			TriggerClientEvent('fs_freemode:spawnWeapons', source, freemodeuser.weapons[i])
-		end
+local src = source
+	TriggerEvent('es:getPlayerFromId', src, function(user)
+		db.getUser(user.getIdentifier(), function(freemodeuser)
+			for i=1, #freemodeuser.weapons do
+				TriggerClientEvent('fs_freemode:spawnWeapons', source, freemodeuser.weapons[i])
+			end
 		end)
 	end)
 end)
