@@ -26,12 +26,13 @@ AddEventHandler("playerSpawned", function(spawn)
 end)
 
 Citizen.CreateThread(function()
-	while true do
-		Wait(60000)
-		if spawned then
-			TriggerServerEvent("fs_freemode:initStats")
-		end
-	end
+    while true do
+    	SetWeatherTypePersist("XMAS")
+    	SetWeatherTypeNowPersist("XMAS")
+    	SetWeatherTypeNow("XMAS")
+    	SetOverrideWeather("XMAS")
+    	Citizen.Wait(5000)
+    end
 end)
 
 Citizen.CreateThread(function()
