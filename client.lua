@@ -26,16 +26,6 @@ AddEventHandler("playerSpawned", function(spawn)
 end)
 
 Citizen.CreateThread(function()
-    while true do
-    	SetWeatherTypePersist("XMAS")
-    	SetWeatherTypeNowPersist("XMAS")
-    	SetWeatherTypeNow("XMAS")
-    	SetOverrideWeather("XMAS")
-    	Citizen.Wait(5000)
-    end
-end)
-
-Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(1)
 		if IsPauseMenuActive() and not pauseMenu then
