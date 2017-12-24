@@ -1,6 +1,12 @@
 i18n.importData("en", {
   welcome_message = "Welcome~g~ ",
+  buy = "Buy",
+  no = "No",
   categories = "Categories",
+  confirm = "Confirm",
+  exit = "Exit",
+  options = "Options",
+  more_cash_needed = "You need more cash",
   enter_bunker_workshop = "Press ~INPUT_CONTEXT~ to access the Bunker Vehicle Workshop.",
   bunker_vehicle_workshop_title = "Bunker Vehicle Workshop",
   enter_bunker = "Press ~INPUT_CONTEXT~ to enter the bunker",
@@ -9,8 +15,13 @@ i18n.importData("en", {
   exit_office = "Press ~INPUT_CONTEXT~ to exit the office",
   enter_moc = "Press ~INPUT_CONTEXT~ to enter the MOC",
   exit_moc = "Press ~INPUT_CONTEXT~ to exit the MOC",
+  enter_vehicleshop = "Press ~INPUT_CONTEXT~ to browse vehicles",
   enter_warehouse = "Press ~INPUT_CONTEXT~ to enter the warehouse",
   exit_warehouse = "Press ~INPUT_CONTEXT~ to exit the warehouse",
   browse_weapons = "Press ~INPUT_CONTEXT~ to browse weapons",
-  weapons_purchased = "Weapon Purchased"
+  weapons_purchased = "Weapon Purchased",
+  vehicles_shop_title = "Vehicle Shop",
+  vehicle_shop_confirmation = "Purchase confirmation",
+  vehicle_inventory = "Vehicle Inventory",
+  vehicles_owned = "Owned vehicles", 
 })

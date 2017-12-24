@@ -3,15 +3,13 @@ Setup = {}
 Setup.ServerName = "My Server"
 Setup.DisplayWelcomeNotification = true
 Setup.blips = true
-Setup.Money = 500000
+Setup.Money = 800000
 Setup.NativeMoney = false
 Setup.Currency = "$"
-Setup.WantedMusicDisabled = true
-Setup.WantedHeadDisplay = true
-Setup.VoiceHeadDisplay = true
 Setup.SpawnPickups = true
 Setup.pvp = true
 Setup.debug = false
+Setup.SetTextChatEnabled = false
 
 PickupItems = {
     "PICKUP_ARMOUR_STANDARD",

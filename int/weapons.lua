@@ -1,7 +1,6 @@
 local weaponPed = {}
 local weaponsLoaded = false
 local WeaponPurchased = false
-
 local weapon_peds = {
   {model="s_m_m_ammucountry", voice="S_M_M_AMMUCOUNTRY_WHITE_MINI_01", x=1692.733, y=3761.895, z=34.705, a=218.535},
   {model="s_m_m_ammucountry", voice="S_M_M_AMMUCOUNTRY_WHITE_MINI_01", x=-330.933, y=6085.677, z=31.455, a=207.323},
@@ -38,8 +37,8 @@ Citizen.CreateThread(function()
         SetBlockingOfNonTemporaryEvents(weaponPed, true)
         SetPedFleeAttributes(weaponPed, 0, 0)
         SetEntityInvincible(weaponPed, true)
-        -- Annimations
         SetAmbientVoiceName(weaponPed, v.voice)
+
         TaskPlayAnim(weaponPed,"random@shop_gunstore","_idle", 8.0, 0.0, -1, 1, 0, 0, 0, 0)
       end
       weaponsLoaded = true

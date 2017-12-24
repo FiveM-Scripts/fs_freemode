@@ -18,6 +18,13 @@ AddEventHandler("fs_freemode:initStats", function(cash)
 	StatSetInt("MP0_WALLET_BALANCE", cash, true)
 end)
 
+RegisterNetEvent("fs_freemode:DisplayWanted")
+AddEventHandler("fs_freemode:DisplayWanted", function(netid)
+	gamerTagId = CreateMpGamerTag(GetPlayerPed(netid), "", false, false, "", 0)
+	SetMpGamerTagVisibility(gamerTagId, 4, true)
+	SetMpGamerTagAlpha(gamerTagId, 4, 240)
+end)
+
 RegisterNetEvent("fs_freemode:notify")
 AddEventHandler("fs_freemode:notify", function(icon, type, color, sender, title, text)
 	Citizen.InvokeNative(0x92F0DA1E27DB96DC, tonumber(color))

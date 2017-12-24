@@ -1,6 +1,17 @@
 # Changelog    
 All notable changes to this project will be documented in this file.
 
+## v1.3.1
+This release contains some improvements to the resource and as a Christmas gift we added the vehicle shop with CouchDB and MySQL support.    
+
+- Added GTA:O chat as a option that you can enable or disable in the config file. Keep in mind that this chat does not support commands.
+- Premium Deluxe Motorsport where players can buy multiple vehicles.
+- Added Lesters office.
+- Added Humane Labs and Research blip.
+- Fixed Database table creation for MariaDB.
+- Fixed Office banner and ped skin.
+- Removed wanted and voice head display, we will add this feature soon in Cops-Fivem.
+
 ## v1.3
 - Added mysql-async support.
 - Removed the stats preview since this will get replaced in the future.

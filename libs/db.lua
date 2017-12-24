@@ -26,11 +26,12 @@ local auth = toBase64Enc(pbytes)
 if(database.driver == "couchdb") then
 	TriggerEvent('es:exposeDBFunctions', function(DB)
 		db.createDocument = DB.createDocument
-		DB.createDatabase('fs_freemode', function()end)
+		DB.createDatabase('fs_freemode', function() end)
+		DB.createDatabase('es_vehshop', function() end)
 		end)
 else
 	MySQL.ready(function()
-		MySQL.Async.execute("CREATE TABLE IF NOT EXISTS fs_freemode (identifier varchar(255), weapons json DEFAULT NULL)") 
+		MySQL.Async.execute("CREATE TABLE IF NOT EXISTS fs_freemode (identifier varchar(255), vehicles text, weapons text)") 
 		end)
 end
 
@@ -47,7 +48,6 @@ function db.getUser(identifier, callback)
 	end, "POST", json.encode(qu), {["Content-Type"] = 'application/json', Authorization = "Basic " .. auth})
 
 		elseif(database.driver == "mysql-async") then
-			print("Loading data from mysql-server for: " .. identifier)
 			MySQL.Async.fetchAll("SELECT * FROM fs_freemode WHERE identifier = '"..identifier.."'", { ['@identifier'] = identifier}, function (result)
 				if (result) then
 					local user = {
@@ -60,7 +60,7 @@ function db.getUser(identifier, callback)
 				end
 		end)
 	else
-		print("Error: database driver not recognized!")
+		print("Error: database driver is not recognized!")
 	end
 end
 
@@ -69,22 +69,19 @@ AddEventHandler('es:newPlayerLoaded', function(source, user)
 	local src = source
 	if(database.driver == "couchdb") then
 		TriggerEvent('es:exposeDBFunctions', function(db)
-			db.createDocument('fs_freemode', {identifier = user.get("identifier"), weapons = {}}, function()
-			end)
+			db.createDocument('fs_freemode', {identifier = user.get("identifier"), weapons = {"WEAPON_PISTOL", "WEAPON_KNIFE"}}, function() end)
+			db.createDocument('es_vehshop', {identifier = user.get("identifier"), personalvehicles = {}}, function() end)			
 		end)
 		created[source] = true
 	elseif(database.driver == "mysql-async") then
 		local identifier = tostring(user.get("identifier"))
-		print("Checking if player exists " ..identifier)
-
 		MySQL.Async.fetchScalar("SELECT identifier FROM fs_freemode WHERE identifier = '"..identifier.."'", { ['@identifier'] = identifier}, function (userIdentifier)
 			if(userIdentifier == nil) then
-				print("Adding identifier " .. identifier)
-				MySQL.Async.execute("INSERT INTO fs_freemode (`identifier`, `weapons`) VALUES (@identifier, @weapons)", { ['@identifier'] = identifier, ['@weapons'] = json.encode({"WEAPON_PISTOL", "WEAPON_KNIFE"}), })
+				MySQL.Async.execute("INSERT INTO fs_freemode (`identifier`, `vehicles`, `weapons`) VALUES (@identifier, @vehicles, @weapons)", { ['@identifier'] = identifier, ['@vehicles'] = json.encode({}), ['@weapons'] = json.encode({"WEAPON_PISTOL", "WEAPON_KNIFE"})})
 			end
 		end)
 		created[source] = true
 	else
-		print("Error : driver not recognize !")
+		print("Error : database driver is not recognized!")
 	end
 end)

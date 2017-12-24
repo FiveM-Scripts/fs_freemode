@@ -22,26 +22,26 @@ local Settings = {
 local function DrawPlayerList()
 	local players = {}
 	for i = 0, 31 do
-		if NetworkIsPlayerActive( i ) then
-			table.insert( players, i )
+		if NetworkIsPlayerActive(i) then
+			table.insert(players, i)
 		end
 	end
 
 	--Top bar
-	DrawRect( 0.11, 0.025, 0.2, 0.03, 0, 0, 0, 220 )
+	DrawRect(0.11, 0.025, 0.2, 0.03, 0, 0, 0, 220)
 	--Top bar title
-	SetTextFont( 4 )
-	SetTextProportional( 0 )
-	SetTextScale( 0.45, 0.45 )
-	SetTextColour( 255, 255, 255, 255 )
-	SetTextDropShadow( 0, 0, 0, 0, 255 )
-	SetTextEdge( 1, 0, 0, 0, 255 )
+	SetTextFont(4)
+	SetTextProportional(0)
+	SetTextScale(0.45, 0.45 )
+	SetTextColour(255, 255, 255, 255)
+	SetTextDropShadow( 0, 0, 0, 0, 255)
+	SetTextEdge(1, 0, 0, 0, 255)
 
-	SetTextEntry( "STRING" )
-	AddTextComponentString( "Players: " .. #players )
+	SetTextEntry("STRING")
+	AddTextComponentString("Players: " .. #players)
 	DrawText( 0.015, 0.007 )
 
-	for k, v in pairs( players ) do
+	for k, v in pairs(players) do
 		local r
 		local g
 		local b
@@ -57,12 +57,12 @@ local function DrawPlayerList()
 		end
 
 		--Row BG
-		DrawRect( 0.11, 0.025 + ( k * 0.03 ), 0.2, 0.03, r, g, b, 220 )
+		DrawRect(0.11, 0.025 + ( k * 0.03 ), 0.2, 0.03, r, g, b, 220)
 
 		--Name Label
-		SetTextFont( 4 )
-		SetTextScale( 0.45, 0.45 )
-		SetTextColour( 255, 255, 255, 255 )
+		SetTextFont(4)
+		SetTextScale(0.45, 0.45)
+		SetTextColour(255, 255, 255, 255)
 
 		SetTextEntry( "STRING" )
 		if Settings["PlayerID"] then
@@ -80,7 +80,7 @@ local function DrawPlayerList()
 			if NetworkIsPlayerTalking(v) then
 				transparency = 255
 			end
-			DrawSprite( "mplobby", "mp_charcard_stats_icons9", 0.2, 0.024 + ( k * 0.03 ), 0.015, 0.025, 0, 255, 255, 255, transparency )
+			DrawSprite("mplobby", "mp_charcard_stats_icons9", 0.2, 0.024 + ( k * 0.03 ), 0.015, 0.025, 0, 255, 255, 255, transparency)
 		end
 
 		--Wanted Stars

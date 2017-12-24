@@ -19,10 +19,12 @@ client_scripts {
   'libs/events.lua',
   'libs/scoreboard.lua',
   'libs/warmenu.lua',
+  'config/vehicles.lua',
   'config.lua',
   'client.lua',
   'int/comedy.lua',
   'int/office.lua',
+  'int/vehicles.lua',
   'int/weapons.lua',
   'int/warehouses.lua',
   'ext/locations.lua',
@@ -36,5 +38,4 @@ server_scripts {
   'database.lua',
   'libs/db.lua',
   'server.lua',
-  'int/weapons_s.lua'
 }

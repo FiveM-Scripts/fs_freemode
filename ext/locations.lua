@@ -1,4 +1,5 @@
 local locations = {
+  {name="Altruist Cult Camp", id=269, c=4, x=-1042.29, y=4910.17, z=94.92},
   {name="Ammu-Nation", id=110, c=4, x=1701.292, y=3750.450, z=34.365},
   {name="Ammu-Nation", id=110, c=4, x=237.428, y=-43.655, z=69.698},
   {name="Ammu-Nation", id=110, c=4, x=843.604, y=-1017.784, z=27.546},
@@ -12,9 +13,7 @@ local locations = {
   {name="Carwash", id=100, x=55.7, y=-1391.3, z=30.5},
   {name="Carwash", id=100, x=-699.320, y=-941.078, z=19.077},
   {name="Comedy Club", id=102, x=-420.087, y=264.681, z=83.1927},
-  {name="Movie Theater", id=135, c=4, x= 300.788, y= 200.752, z= 104.385},
-  {name="Movie Theater", id=135, c=4, x= -1423.954, y= -213.62, z= 46.5},
-  {name="Movie Theater", id=135, c=4, x=302.907, y= 135.939, z= 160.946},
+  {name="Masks store", id=362, c=4, x= -1166.284, y= -1586.368, z=4.377},
   {name="Strip club", id=121, c=4, x=134.476, y=-1307.887, z=28.983},
   {name="Tequil-La La", id=93, c=4, x=-565.171, y=276.625, z=83.286},
   {name="Gang", id=437, c=9, x=298.68, y=-2010.10, z=20.07},
@@ -22,14 +21,15 @@ local locations = {
   {name="Gang", id=437, c=9, x=-183.52, y=-1632.62, z=33.34},
   {name="Gang", id=437, c=9, x=989.37, y=-1777.56, z=31.32},
   {name="Gang", id=437, c=9, x=960.24, y=-140.31, z=74.50},
-  {name="Gang", id=437, c=9, x=-1042.29, y=4910.17, z=94.92},
   {name="Gang", id=437, c=9, x=29.4838, y=3735.593, z=38.688},
   {name="Gang", id=437, c=9, x=-455.752, y=-1711.884, z=18.642},
   {name="FIB", id=106, c=4, x=105.455, y=-745.483, z=44.754},
+  {name="Lester", id=77, c=4, x=718.413, y=-981.006, z=24.124},
   {name="Police station", id=60, c=4, x=425.130, y=-979.558, z=30.711},
   {name="Police station", id=60, c=4, x=1859.234, y= 3678.742, z=33.690},
   {name="Police station", id=60, c=4, x=-438.862, y=6020.768, z=31.490},
   {name="Police station", id=60, c=4, x=818.221, y=-1289.883, z=26.300},
+  {name="Premium Deluxe MotorSport", id=326, c=4, x=-67.264, y=-1091.146, z=26.632},
   {name="Prison", id=285, c=4, x=1679.049, y=2513.711, z=45.565},
   {name="Yacht", id=410, c=4, x=-2045.800, y=-1031.200, z=11.900},
   {name="Warehouse", id=473, c=4, x=958.50, y=-1586.30, z=30.0},
@@ -40,8 +40,8 @@ local locations = {
   {name="Meth Production", id=499, c=4, x=1179.732, y=-3114.203, z=6.028},
   {name="Money Production", id=500, c=4, x=639.35, y=2769.65, z=30},
   {name="Fake ID Production", id=498, c=4, x=378.646, y=-834.4833, z=29.292},
-  {name="Office", id=475, c=4, x=-79.25, y=-833.75, z=30},
-  {name="Bunker", id=557, c=4, x=2110.75, y=3326.50, z=30.0}
+  {name="Office", id=475, c=4, x=-43.954, y=-796.541, z=44.225},
+  {name="Humane Labs", id=80, c=4, x=3624.632, y=3756.963, z=28.516}
 }
 
 Citizen.CreateThread(function()
@@ -120,5 +120,7 @@ Citizen.CreateThread(function()
   RequestIpl("ex_exec_warehouse_placement_interior_1_int_warehouse_s_dlc_milo")
   RequestIpl("ex_exec_warehouse_placement_interior_0_int_warehouse_m_dlc_milo")  
   RequestIpl("ex_exec_warehouse_placement_interior_2_int_warehouse_l_dlc_milo")
-  RequestIpl("ex_dt1_11_office_02b")
+  RequestIpl("ex_dt1_11_office_02c")
+  RequestIpl("id2_14_during_door")
+  RequestIpl("id2_14_during1")
 end)
