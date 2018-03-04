@@ -24,5 +24,5 @@ For transparency into our release cycle and in striving to maintain backward com
 this repo is maintained under the [Semantic Versioning guidelines](http://semver.org/).
 
 ## License
-This resource is released under the [GNU AGPLv3](LICENSE) license.
-The resource for WarManu is released under the [GNU GPLv3](LICENSE-Warmenu.md) license.
+This resource is released under the [GNU AGPLv3](LICENSE) license.    
+The resource WarManu is released under the [GNU GPLv3](LICENSE-Warmenu) license.
