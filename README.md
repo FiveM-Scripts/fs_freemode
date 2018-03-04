@@ -25,4 +25,4 @@ this repo is maintained under the [Semantic Versioning guidelines](http://semver
 
 ## License
 This resource is released under the [GNU AGPLv3](LICENSE) license.    
-The resource WarManu is released under the [GNU GPLv3](LICENSE-Warmenu) license.
+The resource WarMenu is released under the [GNU GPLv3](LICENSE-Warmenu) license.
