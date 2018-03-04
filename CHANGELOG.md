@@ -1,6 +1,22 @@
 # Changelog    
 All notable changes to this project will be documented in this file.
 
+## v1.3.2
+
+- Deprecated default fivem maps: `fivem-map-hipster` and `fivem-map-hipster` are not required anymore.
+- Added a random `mp_m_freemode` skin for each player, this skin is not getting saved to the database right now, but don't worry we are working on this behind the scenes.
+- Added a better respawn system: when the player dies he will respawn close to the spot where he died.
+- Added a menu for Smoke on the water.
+- Added movie theater.
+- Added IPL for Pillbox Hill Medical Center.
+- Added the option to allow players to lock the vehicle doors.
+- Added the option to enable or disable the vehicle engine.
+- Added peds to coke production and Fake ID interiors, this is still WIP.
+- Added sprites for checkboxes to WarMenu.
+- Fixed the issue when a player pressed backspace in the vehicle store he could not move.
+- Updated Warmenu to version 0.9.7.
+- Changed license to GNU AGPLv3.
+
 ## v1.3.1
 This release contains some improvements to the resource and as a Christmas gift we added the vehicle shop with CouchDB and MySQL support.    
 

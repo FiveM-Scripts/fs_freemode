@@ -5,6 +5,8 @@ WarMenu = { }
 -- Options
 WarMenu.debug = false
 
+
+
 -- Local variables
 local menus = { }
 local keys = { up = 172, down = 173, left = 174, right = 175, select = 176, back = 177 }
@@ -14,7 +16,7 @@ local optionCount = 0
 local currentKey = nil
 
 local currentMenu = nil
-local background = nil
+
 
 local menuWidth = 0.23
 
@@ -255,14 +257,34 @@ local function drawButton(text, subText)
         end
 
         drawRect(x, y, menuWidth, buttonHeight, backgroundColor)
-        drawText(text, menus[currentMenu].x + buttonTextXOffset, y - (buttonHeight / 2) + buttonTextYOffset, buttonFont, textColor, buttonScale, false, shadow)
+
+        if (type(text) == "table") then
+            while (not HasStreamedTextureDictLoaded(text["textureDict"])) do
+                RequestStreamedTextureDict(text["textureDict"], true)
+
+                Citizen.Wait(0)
+            end
+
+            DrawSprite(text["textureDict"], text["textureName"], menus[currentMenu].x + (buttonTextXOffset + 0.01), y - (buttonHeight / 2) + (buttonTextYOffset + 0.015), 0.025, 0.04, 0.0, textColor.r, textColor.g, textColor.b, textColor.a)
+        else
+            drawText(tostring(text), menus[currentMenu].x + buttonTextXOffset, y - (buttonHeight / 2) + buttonTextYOffset, buttonFont, textColor, buttonScale, false, shadow)
+        end
 
         if subText then
-            drawText(subText, menus[currentMenu].x + buttonTextXOffset, y - buttonHeight / 2 + buttonTextYOffset, buttonFont, subTextColor, buttonScale, false, shadow, true)
+            if (type(subText) == "table") then
+                while (not HasStreamedTextureDictLoaded(subText["textureDict"])) do
+                    RequestStreamedTextureDict(subText["textureDict"], true)
+
+                    Citizen.Wait(0)
+                end
+
+                DrawSprite(subText["textureDict"], subText["textureName"], menus[currentMenu].x + (menuWidth - 0.025) + (buttonTextXOffset + 0.01), y - (buttonHeight / 2) + (buttonTextXOffset + 0.014), 0.025, 0.04, 0.0, subTextColor.r, subTextColor.g, subTextColor.b, subTextColor.a)
+            else
+                drawText(tostring(subText), menus[currentMenu].x + buttonTextXOffset, y - buttonHeight / 2 + buttonTextYOffset, buttonFont, subTextColor, buttonScale, false, shadow, true)
+            end
         end
     end
 end
-
 
 -- API
 
@@ -330,13 +352,10 @@ function WarMenu.CreateSubMenu(id, parent, subTitle)
         setMenuProperty(id, 'menuFocusBackgroundColor', menus[parent].menuFocusBackgroundColor)
         setMenuProperty(id, 'menuBackgroundColor', menus[parent].menuBackgroundColor)
         setMenuProperty(id, 'subTitleBackgroundColor', menus[parent].subTitleBackgroundColor)
-        -- :(
     else
         debugPrint('Failed to create '..tostring(id)..' submenu: '..tostring(parent)..' parent menu doesn\'t exist')
     end
 end
-
-TaskVehicleDriveToCoord(ped, vehicle, x, y, z, speed, p6, vehicleModel, drivingMode, stopRange, p10)
 
 function WarMenu.CurrentMenu()
     return currentMenu
@@ -359,6 +378,15 @@ function WarMenu.IsMenuOpened(id)
 end
 
 
+function WarMenu.IsAnyMenuOpened()
+    for id, _ in pairs(menus) do
+        if isMenuVisible(id) then return true end
+    end
+
+    return false
+end
+
+
 function WarMenu.IsMenuAboutToBeClosed()
     if menus[currentMenu] then
         return menus[currentMenu].aboutToBeClosed
@@ -373,14 +401,6 @@ function WarMenu.CloseMenu()
         if menus[currentMenu].aboutToBeClosed then
             menus[currentMenu].aboutToBeClosed = false
             setMenuVisible(currentMenu, false)
-            if HasStreamedTextureDictLoaded("CommonMenu") then
-                SetStreamedTextureDictAsNoLongerNeeded("CommonMenu")
-            end
-
-            if HasStreamedTextureDictLoaded("shopui_title_carmod") then
-                SetStreamedTextureDictAsNoLongerNeeded("shopui_title_carmod")
-            end            
-            
             debugPrint(tostring(currentMenu)..' menu closed')
             PlaySoundFrontend(-1, "QUIT", "HUD_FRONTEND_DEFAULT_SOUNDSET", true)
             optionCount = 0
@@ -443,12 +463,17 @@ end
 
 
 function WarMenu.CheckBox(text, bool, callback)
-    local checked = 'Off'
+    local checkedTexture = "shop_tick_icon"
+    local uncheckedTexture = "shop_box_blank"
+
+    local currentTexture = uncheckedTexture
+    --local checked = 'Off'
     if bool then
-        checked = 'On'
+        currentTexture = checkedTexture
+        --checked = 'On'
     end
 
-    if WarMenu.Button(text, checked) then
+    if WarMenu.Button(text, {["textureDict"] = "commonmenu", ["textureName"] = currentTexture}) then
         bool = not bool
         debugPrint(tostring(text)..' checkbox changed to '..tostring(bool))
         callback(bool)
@@ -458,7 +483,6 @@ function WarMenu.CheckBox(text, bool, callback)
 
     return false
 end
-
 
 function WarMenu.ComboBox(text, items, currentIndex, selectedIndex, callback)
     local itemsCount = #items

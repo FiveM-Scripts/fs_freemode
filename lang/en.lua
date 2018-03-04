@@ -1,11 +1,29 @@
+--[[
+            fs_freemode - game mode for FiveM.
+              Copyright (C) 2018 FiveM-Scripts
+              
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU Affero General Public License for more details.
+You should have received a copy of the GNU Affero General Public License
+along with fs_freemode in the file "LICENSE". If not, see <http://www.gnu.org/licenses/>.
+]]
+
 i18n.importData("en", {
   welcome_message = "Welcome~g~ ",
   buy = "Buy",
   no = "No",
+  andtext = " and ",  
   categories = "Categories",
   confirm = "Confirm",
   exit = "Exit",
   options = "Options",
+  items = "Items",
   more_cash_needed = "You need more cash",
   enter_bunker_workshop = "Press ~INPUT_CONTEXT~ to access the Bunker Vehicle Workshop.",
   bunker_vehicle_workshop_title = "Bunker Vehicle Workshop",
@@ -23,5 +41,19 @@ i18n.importData("en", {
   vehicles_shop_title = "Vehicle Shop",
   vehicle_shop_confirmation = "Purchase confirmation",
   vehicle_inventory = "Vehicle Inventory",
-  vehicles_owned = "Owned vehicles", 
+  vehicles_owned = "Owned vehicles",
+  vehicles_lockdoors = "Lock vehicle doors",  
+  vehicles_engine_on = "Engine on",
+  vehicles_inventory_message = "Press ~INPUT_DROP_WEAPON~ to open your vehicle inventory.",
+  cinema_closed = "The cinema is currently closed.~n~Come back between ",
+  enter_cinema = "Press ~INPUT_CONTEXT~ to watch a movie for $10.",
+  leave_cinema = "Press ~INPUT_FRONTEND_CANCEL~ to leave",
+  weed_help = "Press ~INPUT_PICKUP~ to open the weed menu",
+  wasted_message = "~r~Wasted~w~",
+  continue = "Continue       ",
+  call_ems = "Call EMS       ",
+  dispatch = "Dispatch",
+  ems_heal = "Heal request",
+  ems_request = " request EMS support",
+  weedshop_title = "Cannabis Menu",
 })

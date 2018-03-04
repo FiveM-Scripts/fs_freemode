@@ -1,16 +1,30 @@
 Setup = {}
 
-Setup.ServerName = "My Server"
+-- Default game mode configuration.
+Setup.Language = "en"
+Setup.ServerName = "FiveM-Scripts"
+
+Setup.WelcomeNotification = "CHAR_ESTATE_AGENT"
 Setup.DisplayWelcomeNotification = true
 Setup.blips = true
+
 Setup.Money = 800000
 Setup.NativeMoney = false
+Setup.BankEnabled = true
 Setup.Currency = "$"
-Setup.SpawnPickups = true
-Setup.pvp = true
-Setup.debug = false
-Setup.SetTextChatEnabled = false
 
+Setup.SpawnPickups = true
+Setup.SetTextChatEnabled = false
+Setup.TrainsEnabled = true
+Setup.debug = false
+Setup.EMS = false
+
+-- Cinema settings
+Setup.CinemaPrice = 10
+Setup.CinemaOpen = 10
+Setup.CinemaClose = 22
+
+-- Pickups
 PickupItems = {
     "PICKUP_ARMOUR_STANDARD",
     "PICKUP_HEALTH_STANDARD",
@@ -21,3 +35,5 @@ PickupItems = {
     "PICKUP_WEAPON_MINISMG",
     "PICKUP_WEAPON_AUTOSHOTGUN"
 }
+
+

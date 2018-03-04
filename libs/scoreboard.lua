@@ -8,16 +8,9 @@ local Settings = {
 	--Display time in milliseconds
 	["DisplayTime"] = 5000,
 
-	--Keys that will activate the scoreboard.
-	--Change only the number value, NOT the 'true'
-	--Multiple keys can be used, simply add another row with another number
-	--See: https://wiki.fivem.net/w/index.php?title=Controls
-
 	--MultiplayerInfo / Z
 	[20] = true,
 }
-
--- END OF SETTINGS --
 
 local function DrawPlayerList()
 	local players = {}

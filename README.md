@@ -1,5 +1,6 @@
 # fs_freemode
-[![Version](https://img.shields.io/badge/Version-v1.3.1-brightgreen.svg)]()
+[![Version](https://img.shields.io/badge/Version-v1.3.2-brightgreen.svg)]()
+[![License](https://img.shields.io/badge/License-AGPLv3-blue.svg)](LICENSE)
 <a href="https://discord.gg/Cgr5FU6" title="Chat on Discord"><img alt="Discord Status" src="https://discordapp.com/api/guilds/285462938691567627/widget.png"></a>
 
 ## Requirements
@@ -15,6 +16,7 @@ if you file a bug report, your issue should contain a title and a clear descript
 You should also include as much relevant information as possible.
 
 ## Compatible resources
+- [fs_taxi](https://github.com/FiveM-Scripts/fs_taxi)
 - [Cops FiveM](https://forum.fivem.net/t/release-cops-fivem-v1-3-0-07-07-2017/17460)
 
 ## Versioning
@@ -22,4 +24,5 @@ For transparency into our release cycle and in striving to maintain backward com
 this repo is maintained under the [Semantic Versioning guidelines](http://semver.org/).
 
 ## License
-This resource is released under the [GNU GPLv3](license.md) license.
+This resource is released under the [GNU AGPLv3](LICENSE) license.    
+The resource WarManu is released under the [GNU GPLv3](LICENSE-Warmenu) license.
