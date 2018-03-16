@@ -1,7 +1,89 @@
+--[[
+            fs_freemode - game mode for FiveM.
+              Copyright (C) 2018 FiveM-Scripts
+              
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU Affero General Public License for more details.
+You should have received a copy of the GNU Affero General Public License
+along with fs_freemode in the file "LICENSE". If not, see <http://www.gnu.org/licenses/>.
+]]
+
+CokePeds = {}
+ForgeryPeds = {}
+ipls = {"xm_hatch_closed", "xm_hatch_terrain", "xm_hatches_terrain_lod"}
+
+local CokePedCoords = {
+	{gender= "female", x= 1091.372, y= -3196.633, z= -38.993, heading= 1.891},
+	{gender= "female", x= 1094.478, y= -3194.840, z= -38.993, heading= 181.500},
+	{gender= "male",   x= 1099.576, y= -3194.175, z= -38.993, heading= 100.681}
+}
+
+local ForgeryCoords = {
+	{gender="male", x= 1162.75, y= -3196.93, z= -38.2319, heading= 297.480}
+}
+
+local function CreateCokePed(gender, x, y, z, heading)
+    if gender == "male" then
+       model = GetHashKey("mp_m_cocaine_01")
+    elseif gender == "female" then
+       model = GetHashKey("mp_f_cocaine_01")
+    end
+
+    RequestModel(model)
+    while not HasModelLoaded(model) do
+    	Citizen.Wait(0)
+    end
+
+    ped = CreatePed(26, model, x, y, z-1.0001, heading, false, false)
+    SetBlockingOfNonTemporaryEvents(ped, true)
+    SetModelAsNoLongerNeeded(model)
+
+    table.insert(CokePeds, {ped = ped})
+end
+
+local function DeleteCokePed(i, index)
+	if DoesEntityExist(i.ped) then
+		DeleteEntity(i.ped)
+		CokePeds[index] = nil
+	end
+end
+
+local function CreateDocumentPed(gender, x, y, z, heading)
+    if gender == "male" then
+       model = GetHashKey("mp_m_forgery_01")
+    elseif gender == "female" then
+       model = GetHashKey("mp_f_forgery_01")
+    end
+
+    RequestModel(model)
+    while not HasModelLoaded(model) do
+    	Citizen.Wait(0)
+    end
+
+    ped = CreatePed(26, model, x, y, z-1.0001, heading, false, false)
+
+    SetBlockingOfNonTemporaryEvents(ped, true)
+    table.insert(ForgeryPeds, {ped = ped})
+    SetModelAsNoLongerNeeded(model)
+end
+
+local function DeleteDocumentPed(i, index)
+	if DoesEntityExist(i.ped) then
+		DeleteEntity(i.ped)
+		ForgeryPeds[index] = nil
+	end
+end
+
 Citizen.CreateThread(function()
 	while true do
 		Wait(0)
-		local playerCoords = GetEntityCoords(GetPlayerPed(-1), true)
+		local playerCoords = GetEntityCoords(PlayerPedId(), true)
 
 		DrawMarker(1, 1312.100, 4362.241, 40.855-1.0001, 0, 0, 0, 0, 0, 0, 2.0, 3.0, 2.0, 13, 232, 255, 155, 0, 0, 2, 0, 0, 0, 0)
 		if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 1312.100, 4362.241, 40.855, true) <= 5.0 then
@@ -9,7 +91,7 @@ Citizen.CreateThread(function()
 			if IsControlJustPressed(0, 38) then
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
-				SetEntityCoords(GetPlayerPed(-1), 1063.445, -3183.618, -39.164, 168.407)
+				SetEntityCoords(PlayerPedId(), 1063.445, -3183.618, -39.164, 168.407)
 
 				EnableInteriorProp(247297, "weed_upgrade_equip")
 				EnableInteriorProp(247297, "weed_drying")
@@ -67,7 +149,7 @@ Citizen.CreateThread(function()
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
 				
-				SetEntityCoords(GetPlayerPed(-1), 1318.317, 4360.806, 41.170, 239.736)
+				SetEntityCoords(PlayerPedId(), 1318.317, 4360.806, 41.170, 239.736)
 				
 				Citizen.Wait(1000)
 				DoScreenFadeIn(1000)
@@ -78,31 +160,34 @@ Citizen.CreateThread(function()
 		if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 387.636, 3585.846, 33.292, true) <= 5.0 then
 			TriggerEvent("fs_freemode:displayHelp", i18n.translate("enter_warehouse"))
 			if IsControlJustPressed(0, 38) then
+				for k,v in pairs(CokePedCoords) do
+					CreateCokePed(v.gender, v.x, v.y, v.z, v.heading)
+				end
+
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
 
-				SetEntityCoords(GetPlayerPed(-1), 1088.472, -3191.326, -38.993, 193.129)
+				SetEntityCoords(PlayerPedId(), 1088.472, -3191.326, -38.993, 193.129)
+
 				EnableInteriorProp(247553, "coke_cut_01")
 				EnableInteriorProp(247553, "coke_cut_02")
 				EnableInteriorProp(247553, "coke_cut_03")
-				
-				EnableInteriorProp(247553, "security_high")
-				EnableInteriorProp(247553, "production_upgrade")
-				EnableInteriorProp(247553, "equipment_upgrade")
-
 				EnableInteriorProp(247553, "coke_cut_04")
 				EnableInteriorProp(247553, "coke_cut_05")
+				EnableInteriorProp(247553, "coke_press_upgrade")
+
+				EnableInteriorProp(247553, "equipment_upgrade")
+				EnableInteriorProp(247553, "production_upgrade")
+				EnableInteriorProp(247553, "security_high")
 				EnableInteriorProp(247553, "set_up")
 
 				EnableInteriorProp(247553, "table_equipment_upgrade")
-				EnableInteriorProp(247553, "coke_press_upgrade")
 				RefreshInterior(247553)
 
 				Citizen.Wait(1000)
 				DoScreenFadeIn(1000)
 			end
-		end
-	
+		end	
 
 		if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, 1088.803, -3188.257, -38.993, true) <= 1.0 then
 			TriggerEvent("fs_freemode:displayHelp", i18n.translate("exit_warehouse"))
@@ -110,7 +195,12 @@ Citizen.CreateThread(function()
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
 
-				SetEntityCoords(GetPlayerPed(-1), 396.205, 3588.555, 33.292, 68.051)
+				for n, i in pairs(CokePeds) do
+					DeleteCokePed(i, n)
+				end
+
+				SetEntityCoords(PlayerPedId(), 396.205, 3588.555, 33.292, 68.051)
+
 				Citizen.Wait(1000)
 				DoScreenFadeIn(1000)
 			end
@@ -122,7 +212,7 @@ Citizen.CreateThread(function()
 			if IsControlJustPressed(0, 38) then
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
-				SetEntityCoords(GetPlayerPed(-1), 998.629, -3199.545, -36.394)
+				SetEntityCoords(PlayerPedId(), 998.629, -3199.545, -36.394)
 
 				EnableInteriorProp(247041, "meth_lab_upgrade")
 				EnableInteriorProp(247041, "meth_lab_production")
@@ -141,7 +231,7 @@ Citizen.CreateThread(function()
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
 				
-				SetEntityCoords(GetPlayerPed(-1), 1175.980, -3113.109, 6.028)
+				SetEntityCoords(PlayerPedId(), 1175.980, -3113.109, 6.028)
 				Citizen.Wait(1000)
 				DoScreenFadeIn(1000)
 			end
@@ -153,7 +243,7 @@ Citizen.CreateThread(function()
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
 
-				SetEntityCoords(GetPlayerPed(-1), 1094.988, -3101.776, -39.00363)
+				SetEntityCoords(PlayerPedId(), 1094.988, -3101.776, -39.00363)
 				Citizen.Wait(1000)
 				DoScreenFadeIn(1000)				
 			end
@@ -164,7 +254,7 @@ Citizen.CreateThread(function()
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
 
-				SetEntityCoords(GetPlayerPed(-1), 963.946, -1585.238, 30.447)
+				SetEntityCoords(PlayerPedId(), 963.946, -1585.238, 30.447)
 				Citizen.Wait(1000)
 				DoScreenFadeIn(1000)				
 			end
@@ -176,7 +266,7 @@ Citizen.CreateThread(function()
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
 
-				SetEntityCoords(GetPlayerPed(-1), 1056.486, -3105.724, -39.00439)
+				SetEntityCoords(PlayerPedId(), 1056.486, -3105.724, -39.00439)
 				Citizen.Wait(1000)
 				DoScreenFadeIn(1000)				
 			end
@@ -187,7 +277,7 @@ Citizen.CreateThread(function()
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
 
-				SetEntityCoords(GetPlayerPed(-1), 764.240, -909.404, 25.249)
+				SetEntityCoords(PlayerPedId(), 764.240, -909.404, 25.249)
 				Citizen.Wait(1000)
 				DoScreenFadeIn(1000)				
 			end
@@ -199,7 +289,7 @@ Citizen.CreateThread(function()
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
 
-				SetEntityCoords(GetPlayerPed(-1), 1006.967, -3102.079, -39.0035)
+				SetEntityCoords(PlayerPedId(), 1006.967, -3102.079, -39.0035)
 				Citizen.Wait(1000)
 				DoScreenFadeIn(1000)				
 			end
@@ -210,7 +300,7 @@ Citizen.CreateThread(function()
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
 
-				SetEntityCoords(GetPlayerPed(-1), 716.450, -724.156, 25.971)
+				SetEntityCoords(PlayerPedId(), 716.450, -724.156, 25.971)
 				Citizen.Wait(1000)
 				DoScreenFadeIn(1000)				
 			end
@@ -220,7 +310,7 @@ Citizen.CreateThread(function()
 			TriggerEvent("fs_freemode:displayHelp", i18n.translate("enter_warehouse"))
 			if IsControlJustPressed(0, 38) then
 				DoScreenFadeOut(1000)
-				Citizen.Wait(1500)
+				Citizen.Wait(1500)	
 
 				EnableInteriorProp(247809, "counterfeit_security")
 				EnableInteriorProp(247809, "counterfeit_cashpile100a")
@@ -251,7 +341,7 @@ Citizen.CreateThread(function()
 				EnableInteriorProp(247809, "special_chairs")
 
 				RefreshInterior(247809)
-				SetEntityCoords(GetPlayerPed(-1), 1121.897, -3195.338, -40.4025)
+				SetEntityCoords(PlayerPedId(), 1121.897, -3195.338, -40.4025)
 
 				Citizen.Wait(1000)
 				DoScreenFadeIn(1000)				
@@ -263,7 +353,7 @@ Citizen.CreateThread(function()
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
 
-				SetEntityCoords(GetPlayerPed(-1), 642.178, 2784.369, 41.975, 125.059)
+				SetEntityCoords(PlayerPedId(), 642.178, 2784.369, 41.975, 125.059)
 				Citizen.Wait(1000)
 				DoScreenFadeIn(1000)				
 			end
@@ -274,6 +364,11 @@ Citizen.CreateThread(function()
 			if IsControlJustPressed(0, 38) then
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
+
+				for k,v in pairs(ForgeryCoords) do
+					print(k,v)
+					CreateDocumentPed(v.gender, v.x, v.y, v.z, v.heading)
+				end
 
 				EnableInteriorProp(246785, "equipment_upgrade")
 				EnableInteriorProp(246785, "production")
@@ -293,7 +388,7 @@ Citizen.CreateThread(function()
 				EnableInteriorProp(246785, "chair07")
 
 				RefreshInterior(246785) 
-				SetEntityCoords(GetPlayerPed(-1), 1171.920, -3195.916, -39.008, 206.511)
+				SetEntityCoords(PlayerPedId(), 1171.920, -3195.916, -39.008, 206.511)
 
 				Citizen.Wait(1000)
 				DoScreenFadeIn(1000)				
@@ -305,11 +400,123 @@ Citizen.CreateThread(function()
 				DoScreenFadeOut(1000)
 				Citizen.Wait(1500)
 
-				SetEntityCoords(GetPlayerPed(-1), 366.980, -833.991, 29.292, 144.514)
+				for n, i in pairs(ForgeryCoords) do
+					DeleteDocumentPed(i, n)
+				end
+
+				SetEntityCoords(PlayerPedId(), 366.980, -833.991, 29.292, 144.514)
 				Citizen.Wait(1000)
 				DoScreenFadeIn(1000)				
 			end
 		end
   
   end	
+end)
+
+local function LoadFacilityIpls()
+	for k,v in pairs(ipls) do
+		if not IsIplActive(tostring(v)) then
+			RequestIpl(tostring(v))
+		end
+	end	
+end
+
+local function RemoveFacilityIpls()
+	for k,v in pairs(ipls) do
+		if IsIplActive(tostring(v)) then
+			RemoveIpl(tostring(v))
+		end
+	end	
+end
+
+local function AddFacilityInterior()
+	interiorID = GetInteriorAtCoordsWithType(345.0041, 4842.001, -59.9997, "xm_x17dlc_int_02")
+	if IsValidInterior(interiorID) then
+		EnableInteriorProp(interiorID, "set_int_02_decal_01")
+		SetInteriorPropColor(interiorID, "set_int_02_decal_01", 1)
+
+		EnableInteriorProp(interiorID, "set_int_02_lounge1")
+		SetInteriorPropColor(interiorID, "set_int_02_lounge1", 1)
+
+		EnableInteriorProp(interiorID, "set_int_02_cannon")
+		SetInteriorPropColor(interiorID, "set_int_02_cannon", 1)
+
+		EnableInteriorProp(interiorID, "set_int_02_clutter1")
+		SetInteriorPropColor(interiorID, "set_int_02_clutter1", 1)
+
+		EnableInteriorProp(interiorID, "set_int_02_crewemblem")
+		
+		EnableInteriorProp(interiorID,   "set_int_02_shell")
+		SetInteriorPropColor(interiorID, "set_int_02_shell", 1)
+
+		EnableInteriorProp(interiorID, "set_int_02_security")
+		SetInteriorPropColor(interiorID, "set_int_02_security", 1)
+
+		EnableInteriorProp(interiorID,   "set_int_02_sleep")
+		SetInteriorPropColor(interiorID, "set_int_02_sleep", 1)
+
+		EnableInteriorProp(interiorID, "set_int_02_trophy1")
+		SetInteriorPropColor(interiorID, "set_int_02_trophy1", 1)
+
+		EnableInteriorProp(interiorID, "set_int_02_paramedic_complete")
+		SetInteriorPropColor(interiorID, "set_int_02_paramedic_complete", 1)
+
+		EnableInteriorProp(interiorID, "Set_Int_02_outfit_paramedic")
+		SetInteriorPropColor(interiorID, "Set_Int_02_outfit_paramedic", 1)
+
+		EnableInteriorProp(interiorID, "Set_Int_02_outfit_serverfarm")
+		SetInteriorPropColor(interiorID, "Set_Int_02_outfit_serverfarm", 1)
+
+		RefreshInterior(interiorID)
+	end	
+end
+
+local function RemoveFacilityInterior()
+	DisableInteriorProp(interiorID,  "set_int_02_decal_01")
+	DisableInteriorProp(interiorID,  "set_int_02_lounge1")
+	DisableInteriorProp(interiorID,  "set_int_02_cannon")
+	DisableInteriorProp(interiorID,  "set_int_02_clutter1")
+	DisableInteriorProp(interiorID,  "set_int_02_crewemblem")
+	DisableInteriorProp(interiorID,  "set_int_02_shell")
+	DisableInteriorProp(interiorID,  "set_int_02_security")
+	DisableInteriorProp(interiorID,  "set_int_02_sleep")
+	DisableInteriorProp(interiorID,  "set_int_02_trophy1")
+	DisableInteriorProp(interiorID,  "set_int_02_paramedic_complete")
+	DisableInteriorProp(interiorID,  "Set_Int_02_outfit_paramedic")
+	DisableInteriorProp(interiorID,  "Set_Int_02_outfit_serverfarm")
+end
+
+Citizen.CreateThread(function()
+	LoadFacilityIpls()
+	
+	while true do
+		Wait(1)
+		if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId(), true), 1840.16, 226.137, 166.291, true) < 30.0 then
+			DrawMarker(1, 1840.16, 226.137, 166.291-1.000, 0, 0, 0, 0, 0, 0, 1.75, 1.75, 1.0, 198, 148, 21, 155, 0, 0, 2, 0, 0, 0, 0)
+		end
+
+		if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId(), true), 1840.16, 226.137, 166.291, true) < 2.0 then
+			TriggerEvent("fs_freemode:displayHelp", "Press ~INPUT_CONTEXT~ to enter the Facility.")
+			if IsControlJustPressed(0, 38) then
+				AddFacilityInterior()
+				Wait(1000)
+				DoScreenFadeOut(800)
+				Wait(850)
+				SetEntityCoordsNoOffset(PlayerPedId(), 482.51, 4832.033, -57.0314, -10.0613)
+				Wait(300)
+				DoScreenFadeIn(800)
+
+				RemoveFacilityIpls()
+			end
+		end
+
+		DrawMarker(1, 488.745, 4788.49, -58.3939-1.000, 0, 0, 0, 0, 0, 0, 0.75, 0.75, 2.0, 198, 148, 21, 155, 0, 0, 2, 0, 0, 0, 0)
+		
+		if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId(), true), 488.745, 4788.49, -58.3939, true) < 2.0 then
+			RemoveFacilityInterior()
+			LoadFacilityIpls()
+
+			SetEntityCoordsNoOffset(PlayerPedId(), 1837.62, 192.348, 172.318)
+		end
+	end
 end)

@@ -1,6 +1,48 @@
+--[[
+            fs_freemode - game mode for FiveM.
+              Copyright (C) 2018 FiveM-Scripts
+              
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU Affero General Public License for more details.
+You should have received a copy of the GNU Affero General Public License
+along with fs_freemode in the file "LICENSE". If not, see <http://www.gnu.org/licenses/>.
+]]
+
 local carList = {}
 local personalvehicles = {}
-local version = 'v1.3.1'
+
+AddEventHandler('onResourceStart', function(resource)
+	if resource == 'fs_freemode' then	
+		link = GetResourceMetadata(GetCurrentResourceName(), 'resource_repository', 0)
+		version = GetResourceMetadata(GetCurrentResourceName(), 'resource_version', 0)
+
+		if version then		
+			PerformHttpRequest("https://updates.fivem-scripts.org/verify/" .. GetCurrentResourceName(), function(err, rData, headers)
+				print("\nStarting fs_freemode ".. version .."\n----------------------------------------------------")
+				if err == 404 then
+					print("\nUPDATE ERROR: your version could not be verified.\n")
+					print("If you keep receiving this error then please contact FiveM-Scripts.")
+					print("\n----------------------------------------------------")	
+				else
+					local vData = json.decode(rData)
+					if vData.version ~= version then
+						print("You are running an outdated version of " .. GetCurrentResourceName())
+						print("Please get the latest version from our GitHub page ".. link .."\n----------------------------------------------------")
+						SendUpdateNotification = true
+					else 
+						print("You are running the latest version of fs_freemode.\n----------------------------------------------------")				
+					end
+				end
+			end, "GET", "", {["Content-Type"] = 'application/json'})
+		end
+	end
+end)
 
 if Setup.SetTextChatEnabled then
 	StopResource('chat')
@@ -9,42 +51,49 @@ else
 end
 
 TriggerEvent("es:setDefaultSettings", {
-	debugInformation = false,
-	moneyIcon = Setup.Currency,
-	nativeMoneySystem = Setup.NativeMoney,
-	pvpEnabled = Setup.pvp,
-	startingCash = Setup.Money,
-	commandDelimeter= "/"
+        debugInformation = false,
+        moneyIcon = Setup.Currency,
+        nativeMoneySystem = Setup.NativeMoney,
+        pvpEnabled = true,
+        startingCash = Setup.Money,
+        commandDelimeter= "/"
 })
 
 AddEventHandler('es:playerLoaded', function(source, player)
 	player.displayMoney(player.getMoney())
+	local group = player.getGroup()
 
-  if(database.driver == "couchdb") then  
-    TriggerEvent('es:exposeDBFunctions', function(db)
-      db.getDocumentByRow('es_vehshop', 'identifier', player.get('identifier'), function(vehshopuser)
-        if(vehshopuser)then
-          personalvehicles = vehshopuser.personalvehicles
-        else
-          personalvehicles = {}
-        end
+	if(database.driver == "couchdb") then  
+		TriggerEvent('es:exposeDBFunctions', function(db)
+			db.getDocumentByRow('es_vehshop', 'identifier', player.get('identifier'), function(vehshopuser)
+				if(vehshopuser)then
+					personalvehicles = vehshopuser.personalvehicles
+				else
+					personalvehicles = {}
+				end
 
-        TriggerClientEvent('es_vehshop:myVehicles', source, personalvehicles)
-      end)
-    end)
-  else
-      local identifier = player.get('identifier')
-      MySQL.Async.fetchScalar("SELECT vehicles FROM fs_freemode WHERE identifier = '"..identifier.."'", { ['@identifier'] = identifier}, function (vehicles)
-        if vehicles then
-          myVehicles = json.decode(vehicles)
-          personalvehicles = myVehicles
-        else
-          personalvehicles = {}
-        end
-          TriggerClientEvent('es_vehshop:myVehicles', source, personalvehicles)
-      end)
+				TriggerClientEvent('es_vehshop:myVehicles', source, personalvehicles)
+				end)
+			end)
+	else
+		local identifier = player.get('identifier')
+		MySQL.Async.fetchScalar("SELECT vehicles FROM fs_freemode WHERE identifier = '"..identifier.."'", { ['@identifier'] = identifier}, function (vehicles)
+			if vehicles then
+				myVehicles = json.decode(vehicles)
+				personalvehicles = myVehicles
+			else
+				personalvehicles = {}
+			end
+			    TriggerClientEvent('es_vehshop:myVehicles', source, personalvehicles)
+			end)
+	end
 
-  end	
+	if SendUpdateNotification then
+	    if group == "superadmin" or group == "admin" then
+	    	TriggerClientEvent("fs_freemode:UpdateNofity", source)
+	    end
+	end
+
 end)
 
 RegisterServerEvent("fs_freemode:playerSpawned")
@@ -81,7 +130,7 @@ AddEventHandler("fs_freemode:loadInventory", function(source)
 				else
 					personalvehicles = {}
 				end
-				TriggerClientEvent('es_vehshop:myVehicles', source, personalvehicles)          
+				TriggerClientEvent('es_vehshop:myVehicles', source, personalvehicles)
 				end)
 		end
 	end)
@@ -94,6 +143,14 @@ AddEventHandler('fs_freemode:missionComplete', function(total)
 	end)
 end)
 
+RegisterServerEvent('fs_freemode:notifyAll')
+AddEventHandler('fs_freemode:notifyAll', function(icon, sender, title, text)
+	TriggerEvent("es:getPlayers", function(users)
+		for k,v in pairs(users) do
+			TriggerClientEvent("fs_freemode:notify", k, tostring(icon), 4, 2, tostring(sender), tostring(title), tostring(text))
+		end
+	end)	
+end)
 
 RegisterServerEvent('fivem-stores:weapon-menu:item-selected')
 AddEventHandler('fivem-stores:weapon-menu:item-selected', function(s)
@@ -125,7 +182,7 @@ AddEventHandler('fivem-stores:weapon-menu:item-selected', function(s)
 						local arrayWeapons = json.decode(weapons)
 						local myWeapons = false
 
-						for k,v in ipairs(arrayWeapons) do						
+						for k,v in ipairs(arrayWeapons) do
 							if (v == s.Name) then
 								print(k,v)
 								myWeapons = true
@@ -147,17 +204,39 @@ AddEventHandler('fivem-stores:weapon-menu:item-selected', function(s)
 	end)
 end)
 
+RegisterServerEvent('fs_freemode:CheckMoneyForTheater')
+AddEventHandler('fs_freemode:CheckMoneyForTheater', function(price)
+	local Source = tonumber(source)
+	TriggerEvent('es:getPlayerFromId', Source, function(user)
+		if user.getMoney() >= tonumber(price) then
+			user.removeMoney(tonumber(price))
+			TriggerClientEvent('fs_freemode:cinemaPayed', Source)
+		end
+	end)
+end)
+
+RegisterServerEvent('fs_freemode:CheckMoneyForWeed')
+AddEventHandler('fs_freemode:CheckMoneyForWeed', function(price)
+	local Source = tonumber(source)
+	TriggerEvent('es:getPlayerFromId', Source, function(user)   
+		if user.getMoney() >= tonumber(price) then
+			user.removeMoney(tonumber(price))
+			TriggerClientEvent('fs_freemode:buyweed', Source)
+		end
+	end)
+end)
+
 RegisterServerEvent('CheckMoneyForVeh')
 AddEventHandler('CheckMoneyForVeh', function(vehicle, price)
 	local Source = source
-  TriggerEvent('es:getPlayerFromId', Source, function(user)   
+  TriggerEvent('es:getPlayerFromId', Source, function(user)
     local player = user.getIdentifier()
 
     if user.getMoney() >= tonumber(price) then
       user.removeMoney(tonumber(price))
       personalvehicles[#personalvehicles + 1] = vehicle
       TriggerClientEvent('es_vehshop:myVehicles', Source, personalvehicles)
-      TriggerClientEvent('FinishMoneyCheckForVeh', Source, "valid")      
+      TriggerClientEvent('FinishMoneyCheckForVeh', Source, "valid")
             
       if database.driver == "couchdb" then
         TriggerEvent('es:exposeDBFunctions', function(db)
@@ -171,8 +250,8 @@ AddEventHandler('CheckMoneyForVeh', function(vehicle, price)
               end
             end
 
-            if not myVehicles then          
-              vehshopuser.personalvehicles[#vehshopuser.personalvehicles+1] = vehicle            
+            if not myVehicles then
+              vehshopuser.personalvehicles[#vehshopuser.personalvehicles+1] = vehicle
               db.updateDocument('es_vehshop', vehshopuser._id, {personalvehicles = vehshopuser.personalvehicles}, function()  end) 
             end
           end)
@@ -189,7 +268,7 @@ AddEventHandler('CheckMoneyForVeh', function(vehicle, price)
 
                 if not vehicleExists then
                   arrayVehicles[#arrayVehicles+1] = vehicle
-                  local update = json.encode(arrayVehicles)                  
+                  local update = json.encode(arrayVehicles)
                   MySQL.Async.execute("UPDATE fs_freemode SET vehicles='"..update.."' WHERE identifier = '"..player.."'", {})
                 else
                   TriggerClientEvent('FinishMoneyCheckForVeh', Source, "exists")
@@ -204,23 +283,3 @@ AddEventHandler('CheckMoneyForVeh', function(vehicle, price)
     end
   end)
 end)
-
-PerformHttpRequest("https://updates.fivem-scripts.org/verify/" .. GetCurrentResourceName(), function(err, rData, headers)
-	if err == 404 or err == 403 then
-		print("\n***************************************************************************************************************")
-		print("\nFREEMODE UPDATE ERROR: your version could not be verified.\n")
-		print("Verify that the folder in your resources directory is named fs_freemode.")
-		print("\n***************************************************************************************************************")		
-		
-		StopResource(GetCurrentResourceName())		
-	else
-		local vData = json.decode(rData)
-		if vData.version ~= version then
-			print("\n***************************************************************************************************************")
-			print("You are running an outdated version of " .. GetCurrentResourceName())
-			print("Please get the latest version from our GitHub page https://github.com/FiveM-Scripts/fs_freemode/releases/latest")
-			print("\n***************************************************************************************************************")
-
-		end
-	end
-end, "GET", "", {["Content-Type"] = 'application/json'})
