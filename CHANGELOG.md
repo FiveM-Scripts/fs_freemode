@@ -1,6 +1,11 @@
 # Changelog    
 All notable changes to this project will be documented in this file.
 
+## v1.3.3
+
+- Added Doomsday heist facility.
+- Added Doomsday heist vehicles to the vehicle shop.
+
 ## v1.3.2
 
 - Deprecated default fivem maps: `fivem-map-hipster` and `fivem-map-hipster` are not required anymore.

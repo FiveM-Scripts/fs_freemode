@@ -16,6 +16,7 @@ along with fs_freemode in the file "LICENSE". If not, see <http://www.gnu.org/li
 
 CokePeds = {}
 ForgeryPeds = {}
+ipls = {"xm_hatch_closed", "xm_hatch_terrain", "xm_hatches_terrain_lod"}
 
 local CokePedCoords = {
 	{gender= "female", x= 1091.372, y= -3196.633, z= -38.993, heading= 1.891},
@@ -410,4 +411,112 @@ Citizen.CreateThread(function()
 		end
   
   end	
+end)
+
+local function LoadFacilityIpls()
+	for k,v in pairs(ipls) do
+		if not IsIplActive(tostring(v)) then
+			RequestIpl(tostring(v))
+		end
+	end	
+end
+
+local function RemoveFacilityIpls()
+	for k,v in pairs(ipls) do
+		if IsIplActive(tostring(v)) then
+			RemoveIpl(tostring(v))
+		end
+	end	
+end
+
+local function AddFacilityInterior()
+	interiorID = GetInteriorAtCoordsWithType(345.0041, 4842.001, -59.9997, "xm_x17dlc_int_02")
+	if IsValidInterior(interiorID) then
+		EnableInteriorProp(interiorID, "set_int_02_decal_01")
+		SetInteriorPropColor(interiorID, "set_int_02_decal_01", 1)
+
+		EnableInteriorProp(interiorID, "set_int_02_lounge1")
+		SetInteriorPropColor(interiorID, "set_int_02_lounge1", 1)
+
+		EnableInteriorProp(interiorID, "set_int_02_cannon")
+		SetInteriorPropColor(interiorID, "set_int_02_cannon", 1)
+
+		EnableInteriorProp(interiorID, "set_int_02_clutter1")
+		SetInteriorPropColor(interiorID, "set_int_02_clutter1", 1)
+
+		EnableInteriorProp(interiorID, "set_int_02_crewemblem")
+		
+		EnableInteriorProp(interiorID,   "set_int_02_shell")
+		SetInteriorPropColor(interiorID, "set_int_02_shell", 1)
+
+		EnableInteriorProp(interiorID, "set_int_02_security")
+		SetInteriorPropColor(interiorID, "set_int_02_security", 1)
+
+		EnableInteriorProp(interiorID,   "set_int_02_sleep")
+		SetInteriorPropColor(interiorID, "set_int_02_sleep", 1)
+
+		EnableInteriorProp(interiorID, "set_int_02_trophy1")
+		SetInteriorPropColor(interiorID, "set_int_02_trophy1", 1)
+
+		EnableInteriorProp(interiorID, "set_int_02_paramedic_complete")
+		SetInteriorPropColor(interiorID, "set_int_02_paramedic_complete", 1)
+
+		EnableInteriorProp(interiorID, "Set_Int_02_outfit_paramedic")
+		SetInteriorPropColor(interiorID, "Set_Int_02_outfit_paramedic", 1)
+
+		EnableInteriorProp(interiorID, "Set_Int_02_outfit_serverfarm")
+		SetInteriorPropColor(interiorID, "Set_Int_02_outfit_serverfarm", 1)
+
+		RefreshInterior(interiorID)
+	end	
+end
+
+local function RemoveFacilityInterior()
+	DisableInteriorProp(interiorID,  "set_int_02_decal_01")
+	DisableInteriorProp(interiorID,  "set_int_02_lounge1")
+	DisableInteriorProp(interiorID,  "set_int_02_cannon")
+	DisableInteriorProp(interiorID,  "set_int_02_clutter1")
+	DisableInteriorProp(interiorID,  "set_int_02_crewemblem")
+	DisableInteriorProp(interiorID,  "set_int_02_shell")
+	DisableInteriorProp(interiorID,  "set_int_02_security")
+	DisableInteriorProp(interiorID,  "set_int_02_sleep")
+	DisableInteriorProp(interiorID,  "set_int_02_trophy1")
+	DisableInteriorProp(interiorID,  "set_int_02_paramedic_complete")
+	DisableInteriorProp(interiorID,  "Set_Int_02_outfit_paramedic")
+	DisableInteriorProp(interiorID,  "Set_Int_02_outfit_serverfarm")
+end
+
+Citizen.CreateThread(function()
+	LoadFacilityIpls()
+	
+	while true do
+		Wait(1)
+		if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId(), true), 1840.16, 226.137, 166.291, true) < 30.0 then
+			DrawMarker(1, 1840.16, 226.137, 166.291-1.000, 0, 0, 0, 0, 0, 0, 1.75, 1.75, 1.0, 198, 148, 21, 155, 0, 0, 2, 0, 0, 0, 0)
+		end
+
+		if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId(), true), 1840.16, 226.137, 166.291, true) < 2.0 then
+			TriggerEvent("fs_freemode:displayHelp", "Press ~INPUT_CONTEXT~ to enter the Facility.")
+			if IsControlJustPressed(0, 38) then
+				AddFacilityInterior()
+				Wait(1000)
+				DoScreenFadeOut(800)
+				Wait(850)
+				SetEntityCoordsNoOffset(PlayerPedId(), 482.51, 4832.033, -57.0314, -10.0613)
+				Wait(300)
+				DoScreenFadeIn(800)
+
+				RemoveFacilityIpls()
+			end
+		end
+
+		DrawMarker(1, 488.745, 4788.49, -58.3939-1.000, 0, 0, 0, 0, 0, 0, 0.75, 0.75, 2.0, 198, 148, 21, 155, 0, 0, 2, 0, 0, 0, 0)
+		
+		if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId(), true), 488.745, 4788.49, -58.3939, true) < 2.0 then
+			RemoveFacilityInterior()
+			LoadFacilityIpls()
+
+			SetEntityCoordsNoOffset(PlayerPedId(), 1837.62, 192.348, 172.318)
+		end
+	end
 end)

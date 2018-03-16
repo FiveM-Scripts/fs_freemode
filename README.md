@@ -1,5 +1,5 @@
 # fs_freemode
-[![Version](https://img.shields.io/badge/Version-v1.3.2-brightgreen.svg)]()
+[![Version](https://img.shields.io/badge/Version-v1.3.3-brightgreen.svg)]()
 [![License](https://img.shields.io/badge/License-AGPLv3-blue.svg)](LICENSE)
 <a href="https://discord.gg/Cgr5FU6" title="Chat on Discord"><img alt="Discord Status" src="https://discordapp.com/api/guilds/285462938691567627/widget.png"></a>
 
@@ -25,4 +25,4 @@ this repo is maintained under the [Semantic Versioning guidelines](http://semver
 
 ## License
 This resource is released under the [GNU AGPLv3](LICENSE) license.    
-The resource WarMenu is released under the [GNU GPLv3](LICENSE-Warmenu) license.
+WarMenu is released under the [GNU GPLv3](libs/Warmenu-License.txt) license.

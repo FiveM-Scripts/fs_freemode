@@ -24,6 +24,7 @@ compacts = {
 }
 
 coupes = { 
+  {name= "Albany Hermes", costs=9800, model="hermes"},
   {name= "Cognoscenti Cabrio", costs = 180000, model = "cogcabrio"},
   {name= "Exemplar", costs = 200000, model = "exemplar"},
   {name= "F620", costs = 80000, model= "f620"},
@@ -92,8 +93,10 @@ sports = {
    {name= "Omnis", costs = 701000, model = "omnis"},
    {name= "Ruiner 2000", costs=5745600, model= "ruiner2"},
    {name= "Penumbra", costs = 24000, model = "penumbra"},
+   {name= "Coil Raiden", costs = 2400, model = "raiden"},
    {name= "Rapid GT", costs = 140000, model = "rapidgt"},
    {name= "Rapid GT Convertible", costs = 150000, model = "rapidgt2"},
+   {name= "Ocelot Pariah", costs = 250000, model = "pariah"},
    {name= "Schafter V12", costs = 140000, model = "schafter3"},
    {name= "Sultan", costs = 12000, model = "sultan"},
    {name= "Surano", costs = 110000, model = "surano"},
@@ -105,6 +108,7 @@ sportclassics = {
   {name = "Casco", costs = 680000, model = "casco"},
   {name = "Coquette Classic", costs = 665000, model = "coquette2"},
   {name = "JB 700", costs = 350000, model = "jb700"},
+  {name = "Lampadati Viseris", costs=450000, model= "viseris"},
   {name = "Pigalle", costs = 400000, model = "pigalle"},
   {name = "Stinger", costs = 850000, model = "stinger"},
   {name = "Stinger GT", costs = 875000, model = "stingergt"},
@@ -122,12 +126,14 @@ super = {
    {name = "FMJ", costs = 1750000, model = "fmj"},
    {name = "Infernus", costs = 440000, model = "infernus"},
    {name = "Osiris", costs = 1950000, model = "osiris"},
+   {name = "Overflod Autarch", costs=2250000, model= "autarch"},
    {name = "RE-7B", costs = 2475000, model = "le7b"},
    {name = "Reaper", costs = 1595000, model = "reaper"},
    {name = "Sultan RS", costs = 795000, model = "sultanrs"},
    {name = "T20", costs = 2200000, model = "t20"},
    {name = "Turismo R", costs = 500000, model = "turismor"},
    {name = "Tyrus", costs = 2550000, model = "tyrus"},
+   {name = "Ubermacht SC1", costs=2200000, model = "sc1"},
    {name = "Vacca", costs = 240000, model = "vacca"},
    {name = "Voltic", costs = 150000, model = "voltic"},
    {name = "X80 Proto", costs = 2700000, model = "prototipo"},
@@ -157,11 +163,13 @@ offroad = {
     {name = "Blazer", costs = 8000, model = "blazer"},
     {name = "Brawler", costs = 715000, model = "brawler"},
     {name = "Bubsta 6x6", costs = 249000, model = "dubsta3"},
+    {name = "Canis Kamacho", costs = 35000, model="kamacho"},
     {name = "Dune Buggy", costs = 20000, model = "dune"},
     {name = "Rebel", costs = 22000, model = "rebel2"},
     {name = "Sandking", costs = 38000, model = "sandking"},
     {name = "The Liberator", costs = 550000, model = "monster"},
     {name = "Trophy Truck", costs = 550000, model = "trophytruck"},
+    {name = "Vapid Riata", costs = 38000, model="riata"},
 }
 
 suvs = {

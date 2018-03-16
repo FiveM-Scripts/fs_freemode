@@ -41,9 +41,6 @@ AddEventHandler('onResourceStart', function(resource)
 				end
 			end, "GET", "", {["Content-Type"] = 'application/json'})
 		end
-	else
-		print("Your folder is not set set to fs_freemode")
-		CancelEvent()
 	end
 end)
 

@@ -36,6 +36,7 @@ local locations = {
   {name="Carwash", id=100, c=4, x=55.7, y=-1391.3, z=30.5},
   {name="Carwash", id=100, c=4, x=-699.320, y=-941.078, z=19.077},
   {name="Comedy Club", id=102, c=4, x=-420.087, y=264.681, z=83.1927},
+  {name="Facility", id=590, c=8, x=1837.92, y=220.767, z=176.917},
   {name="Movie Theater", id=135, c=4, x=298.278, y=195.984, z=104.313},
   {name="Masks store", id=362, c=4, x= -1166.284, y= -1586.368, z=4.377},
   {name="Strip club", id=121, c=4, x=134.476, y=-1307.887, z=28.983},
