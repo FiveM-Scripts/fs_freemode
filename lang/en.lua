@@ -56,4 +56,7 @@ i18n.importData("en", {
   ems_heal = "Heal request",
   ems_request = " request EMS support",
   weedshop_title = "Cannabis Menu",
+  enter_facility = "Press ~INPUT_CONTEXT~ to enter the facility.",
+  leave_facility = "Press ~INPUT_CONTEXT~ to leave the facility.",
+  update_available = "a new update for fs_freemode is available, please update now."
 })

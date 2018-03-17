@@ -1,7 +1,7 @@
 resource_manifest_version '05cfa83c-a124-4cfa-a768-c24a5811d8f9'
 resource_repository 'https://github.com/FiveM-Scripts/fs_freemode'
 resource_type 'gametype' { name = 'fs_freemode'}
-resource_version 'v1.3.3'
+resource_version 'v1.3.4'
 
 dependency 'essentialmode'
 

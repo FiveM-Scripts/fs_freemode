@@ -66,7 +66,7 @@ RegisterNetEvent("fs_freemode:UpdateNofity")
 AddEventHandler("fs_freemode:UpdateNofity", function()
 	Citizen.Wait(30000)
 	PlaySoundFrontend(GetSoundId(), "Text_Arrive_Tone", "Phone_SoundSet_Default", true)
-	TriggerEvent("fs_freemode:notify", "CHAR_LESTER", 1, 167, "FiveM-Scripts", false, "a new update for fs_freemode is available, please update asap.")
+	TriggerEvent("fs_freemode:notify", "CHAR_LESTER", 1, 167, "FiveM-Scripts", false, i18n.translate('update_available'))
 end)
 
 RegisterNetEvent('fs_freemode:spawnWeapons')
