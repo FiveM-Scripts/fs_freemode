@@ -193,7 +193,7 @@ AddEventHandler("playerSpawned", function(spawn)
 	if firstJoin then
 		StartPlayerSwitch(PlayerPedId(), PlayerPedId(), 2050, 1)
 	end
-
+	
 	AddTextEntry('FE_THDR_GTAO', Setup.ServerName)
 
 	if Setup.SetTextChatEnabled then

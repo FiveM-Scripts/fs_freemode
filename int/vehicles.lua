@@ -29,13 +29,12 @@ end)
 
 local function SpawnFakeCar(vehicle, price)
   local playerCoords = GetEntityCoords(playerPed)
+  local hash = GetHashKey(vehicle)
 
   if fakecar.model ~= vehicle then
     if DoesEntityExist(fakecar.car) then
       Citizen.InvokeNative(0xEA386986E786A54F, Citizen.PointerValueIntInitialized(fakecar.car))
     end
-
-    local hash = GetHashKey(vehicle)
 
     RequestModel(hash)
     while not HasModelLoaded(hash) do
@@ -291,12 +290,7 @@ AddEventHandler('FinishMoneyCheckForVeh', function(moneyCheck)
 
         FreezeEntityPosition(PlayerPedId(), false)
         local personal = CreateVehicle(model, -19.521, -1117.096, 26.765, 175.394, true, true)        
-        local id = NetworkGetNetworkIdFromEntity(personal)
-
-        SetNetworkIdCanMigrate(id, true)
         SetVehicleOnGroundProperly(personal)
-
-        -- SetEntityAsMissionEntity(personal, true, true)
         SetEntityVisible(playerPed, true)
 
         SetVehRadioStation(personal, "OFF")
@@ -306,7 +300,9 @@ AddEventHandler('FinishMoneyCheckForVeh', function(moneyCheck)
         SetVehicleExtraColours(personal, extra_colors[1],extra_colors[2])
         TaskWarpPedIntoVehicle(PlayerPedId(), personal, -1)
 
-
+        local netid = NetworkGetNetworkIdFromEntity(personal)
+        SetNetworkIdCanMigrate(netid, true)
+        NetworkRegisterEntityAsNetworked(VehToNet(personal))        
   else
     if DoesEntityExist(fakecar.car) then
         Citizen.InvokeNative(0xEA386986E786A54F, Citizen.PointerValueIntInitialized(fakecar.car))
@@ -379,8 +375,10 @@ Citizen.CreateThread(function()
             end
 
             WarMenu.Display()        
-            elseif IsControlJustReleased(0, 56) then
-                WarMenu.OpenMenu('inventory')
+            elseif not IsPlayerSwitchInProgress() then
+                if IsControlJustReleased(0, Setup.InventoryKey) then
+                    WarMenu.OpenMenu('inventory')
+                end
             end
 
             if engineoff then
@@ -409,15 +407,16 @@ AddEventHandler('vehshop:spawnVehicle', function(v)
         end
 
         local veh = CreateVehicle(car, playerCoords, true, false)
-        local id = NetworkGetNetworkIdFromEntity(veh)
-        SetNetworkIdCanMigrate(id, true)
-
-        TaskWarpPedIntoVehicle(playerPed, veh, -1)
-        --SetEntityAsMissionEntity(veh, true, true)
         SetVehicleHasBeenOwnedByPlayer(veh, true)
         SetVehRadioStation(veh, "OFF")
 
         FreezeEntityPosition(PlayerPedId(), false)
         SetEntityVisible(PlayerPedId(), true)
+
+        TaskWarpPedIntoVehicle(playerPed, veh, -1)
+
+        local netid = NetworkGetNetworkIdFromEntity(veh)
+        SetNetworkIdCanMigrate(netid, true)
+        NetworkRegisterEntityAsNetworked(VehToNet(veh))
     end
 end)
