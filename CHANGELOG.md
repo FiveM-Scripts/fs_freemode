@@ -1,10 +1,14 @@
 # Changelog    
 All notable changes to this project will be documented in this file.
 
-## v1.3.3
+## v1.3.4
+- Added Doomsday heists weapons to the Ammu-Nation stores.
+- Fixed missing translations. 
+- Fixed Doomsday heists facility exit point.
 
-- Added Doomsday heist facility.
-- Added Doomsday heist vehicles to the vehicle shop.
+## v1.3.3
+- Added Doomsday heists facility.
+- Added Doomsday heists vehicles to the vehicle shop.
 
 ## v1.3.2
 

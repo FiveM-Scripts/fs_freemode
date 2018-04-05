@@ -109,6 +109,15 @@
 		<Price>3200.00</Price>
 	</Weapons>
 	<Weapons>
+		<Hash>1746263880</Hash>
+		<Name>WEAPON_DOUBLEACTION</Name>
+		<FriendlyName>Double-Action Revolver</FriendlyName>
+		<GroupHash>416676503u</GroupHash>
+		<GroupName>Pistol</GroupName>
+		<GroupFriendlyName>Handguns</GroupFriendlyName>
+		<Price>5400.00</Price>
+	</Weapons>
+	<Weapons>
 		<Hash>0x47757124</Hash>
 		<Name>WEAPON_FLAREGUN</Name>
 		<FriendlyName>Flare Gun</FriendlyName>
@@ -135,6 +144,15 @@
 		<GroupFriendlyName>Handguns</GroupFriendlyName>
 		<Price>5400.00</Price>
 	</Weapons>
+	<Weapons>
+		<Hash>879347409</Hash>
+		<Name>WEAPON_REVOLVER_MK2</Name>
+		<FriendlyName>Revolver Mk ||</FriendlyName>
+		<GroupHash>416676503u</GroupHash>
+		<GroupName>Pistol</GroupName>
+		<GroupFriendlyName>Handguns</GroupFriendlyName>
+		<Price>5400.00</Price>
+	</Weapons>	
 	<Weapons>
 		<Hash>0xDC4DB296</Hash>
 		<Name>WEAPON_MARKSMANPISTOL</Name>
@@ -180,6 +198,15 @@
 		<GroupFriendlyName>Handguns</GroupFriendlyName>
 		<Price>2750.00</Price>
 	</Weapons>
+	<Weapons>
+		<Hash>2009644972</Hash>
+		<Name>WEAPON_SNSPISTOL_MK2</Name>
+		<FriendlyName>SNS Pistol Mk ||</FriendlyName>
+		<GroupHash>416676503u</GroupHash>
+		<GroupName>Pistol</GroupName>
+		<GroupFriendlyName>Handguns</GroupFriendlyName>
+		<Price>2750.00</Price>
+	</Weapons>	
 	<Weapons>
 		<Hash>0x3656C8C1</Hash>
 		<Name>WEAPON_STUNGUN</Name>
@@ -234,6 +261,15 @@
 		<GroupFriendlyName>Shotguns</GroupFriendlyName>
 		<Price>3500.00</Price>
 	</Weapons>
+	<Weapons>
+		<Hash>1432025498</Hash>
+		<Name>WEAPON_PUMPSHOTGUN_MK2</Name>
+		<FriendlyName>Pump Shotgun Mk II</FriendlyName>
+		<GroupHash>860033945u</GroupHash>
+		<GroupName>SHOTGUN</GroupName>
+		<GroupFriendlyName>Shotguns</GroupFriendlyName>
+		<Price>3800.00</Price>
+	</Weapons>	
 	<Weapons>
 		<Hash>0x7846A318</Hash>
 		<Name>WEAPON_SAWNOFFSHOTGUN</Name>
@@ -388,6 +424,15 @@
 		<Price>14500.00</Price>
 	</Weapons>
 	<Weapons>
+		<Hash>2066285827</Hash>
+		<Name>WEAPON_BULLPUPRIFLE_MK2</Name>
+		<FriendlyName>Bullpup Rifle Mk II</FriendlyName>
+		<GroupHash>970310034u</GroupHash>
+		<GroupName>AssaultRifle</GroupName>
+		<GroupFriendlyName>Assault Rifles</GroupFriendlyName>
+		<Price>1500.00</Price>
+	</Weapons>	
+	<Weapons>
 		<Hash>0x83BF0278</Hash>
 		<Name>WEAPON_CARBINERIFLE</Name>
 		<FriendlyName>Carbine Rifle</FriendlyName>
@@ -400,6 +445,15 @@
 		<Hash>0x83BF0278</Hash>
 		<Name>WEAPON_CARBINERIFLE_MK2</Name>
 		<FriendlyName>Carbine Rifle MK2</FriendlyName>
+		<GroupHash>970310034u</GroupHash>
+		<GroupName>AssaultRifle</GroupName>
+		<GroupFriendlyName>Assault Rifles</GroupFriendlyName>
+		<Price>13000.00</Price>
+	</Weapons>
+	<Weapons>
+		<Hash>1768145561</Hash>
+		<Name>WEAPON_SPECIALCARBINE_MK2</Name>
+		<FriendlyName>Special Carbine Mk II</FriendlyName>
 		<GroupHash>970310034u</GroupHash>
 		<GroupName>AssaultRifle</GroupName>
 		<GroupFriendlyName>Assault Rifles</GroupFriendlyName>
@@ -440,6 +494,15 @@
 		<GroupName>Sniper</GroupName>
 		<GroupFriendlyName>Sniper Rifles</GroupFriendlyName>
 		<Price>15750.00</Price>
+	</Weapons>
+	<Weapons>
+		<Hash>0xC734385A</Hash>
+		<Name>WEAPON_MARKSMANRIFLE_MK2</Name>
+		<FriendlyName>Marksman Rifle Mk II</FriendlyName>
+		<GroupHash>3082541095u</GroupHash>
+		<GroupName>Sniper</GroupName>
+		<GroupFriendlyName>Sniper Rifles</GroupFriendlyName>
+		<Price>19750.00</Price>
 	</Weapons>
 	<Weapons>
 		<Hash>0x05FC3C11</Hash>

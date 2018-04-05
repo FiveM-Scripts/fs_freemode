@@ -16,7 +16,7 @@ along with fs_freemode in the file "LICENSE". If not, see <http://www.gnu.org/li
 
 CokePeds = {}
 ForgeryPeds = {}
-ipls = {"xm_hatch_closed", "xm_hatch_terrain", "xm_hatches_terrain_lod"}
+ipls = {"xm_bunkerentrance_door", "xm_hatch_terrain", "xm_hatches_terrain_lod", "xm_hatch_closed"}
 
 local CokePedCoords = {
 	{gender= "female", x= 1091.372, y= -3196.633, z= -38.993, heading= 1.891},
@@ -430,7 +430,7 @@ local function RemoveFacilityIpls()
 end
 
 local function AddFacilityInterior()
-	interiorID = GetInteriorAtCoordsWithType(345.0041, 4842.001, -59.9997, "xm_x17dlc_int_02")
+	interiorID = GetInteriorAtCoordsWithType(345.0041, 4822.001, -59.9997, "xm_x17dlc_int_02")
 	if IsValidInterior(interiorID) then
 		EnableInteriorProp(interiorID, "set_int_02_decal_01")
 		SetInteriorPropColor(interiorID, "set_int_02_decal_01", 1)
@@ -496,27 +496,42 @@ Citizen.CreateThread(function()
 		end
 
 		if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId(), true), 1840.16, 226.137, 166.291, true) < 2.0 then
-			TriggerEvent("fs_freemode:displayHelp", "Press ~INPUT_CONTEXT~ to enter the Facility.")
+			TriggerEvent("fs_freemode:displayHelp", i18n.translate('enter_facility'))
 			if IsControlJustPressed(0, 38) then
+				SetAmbientZoneState("dlc_xm_int02_player_facility_zones", 1, 0)
 				AddFacilityInterior()
 				Wait(1000)
 				DoScreenFadeOut(800)
 				Wait(850)
 				SetEntityCoordsNoOffset(PlayerPedId(), 482.51, 4832.033, -57.0314, -10.0613)
-				Wait(300)
+				Wait(850)
 				DoScreenFadeIn(800)
 
 				RemoveFacilityIpls()
 			end
 		end
 
-		DrawMarker(1, 488.745, 4788.49, -58.3939-1.000, 0, 0, 0, 0, 0, 0, 0.75, 0.75, 2.0, 198, 148, 21, 155, 0, 0, 2, 0, 0, 0, 0)
-		
-		if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId(), true), 488.745, 4788.49, -58.3939, true) < 2.0 then
-			RemoveFacilityInterior()
-			LoadFacilityIpls()
+		if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId(), true), 486.558, 4819.76, -58.3828, true) < 50 then
+			DrawMarker(1, 486.558, 4819.76, -58.3828-1.000, 0, 0, 0, 0, 0, 0, 0.75, 0.75, 1.0, 198, 148, 21, 155, 0, 0, 2, 0, 0, 0, 0)
+		end
 
-			SetEntityCoordsNoOffset(PlayerPedId(), 1837.62, 192.348, 172.318)
+		if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId(), true), 430.9214, 4819.802, -59.8999, true) < 3.0 then
+			PlaySoundFromCoord(-1, "scanner_alarm_os", 430.9214, 4819.802, -59.8999, "dlc_xm_iaa_player_facility_sounds", 1, 100, 0)
+		end
+	
+		if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId(), true), 486.558, 4819.76, -58.3828, true) < 2.0 then
+			TriggerEvent("fs_freemode:displayHelp", i18n.translate('leave_facility'))
+			if IsControlJustPressed(0, 38) then
+				DoScreenFadeOut(500)
+				Wait(500)
+
+				RemoveFacilityInterior()
+				LoadFacilityIpls()
+				SetEntityCoordsNoOffset(PlayerPedId(), 1837.62, 192.348, 172.318)
+
+				Wait(500)
+				DoScreenFadeIn(500)
+			end
 		end
 	end
 end)

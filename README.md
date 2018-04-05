@@ -10,11 +10,6 @@
 ## Documentation   
  Documentation for fs_freemode can be found [here](https://freemode.readme.io).    
 
-## Bug reporting
-Creating a bug report serves to help yourself and others start on the path of fixing the problem.    
-if you file a bug report, your issue should contain a title and a clear description of the issue.    
-You should also include as much relevant information as possible.
-
 ## Compatible resources
 - [fs_taxi](https://github.com/FiveM-Scripts/fs_taxi)
 - [Cops FiveM](https://forum.fivem.net/t/release-cops-fivem-v1-3-0-07-07-2017/17460)
