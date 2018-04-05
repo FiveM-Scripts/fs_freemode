@@ -1,6 +1,6 @@
 # fs_freemode
-[![Version](https://img.shields.io/badge/Version-v1.3.3-brightgreen.svg)]()
-[![License](https://img.shields.io/badge/License-AGPLv3-blue.svg)](LICENSE)
+[![Version](https://img.shields.io/badge/Version-v1.3.5-brightgreen.svg)]()
+[![GitHub license](https://img.shields.io/github/license/FiveM-Scripts/fs_freemode.svg)](https://github.com/FiveM-Scripts/fs_freemode/blob/master/LICENSE)
 <a href="https://discord.gg/Cgr5FU6" title="Chat on Discord"><img alt="Discord Status" src="https://discordapp.com/api/guilds/285462938691567627/widget.png"></a>
 
 ## Requirements

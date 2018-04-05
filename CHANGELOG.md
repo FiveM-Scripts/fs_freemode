@@ -1,6 +1,9 @@
 # Changelog    
 All notable changes to this project will be documented in this file.
 
+## v1.3.5
+- Server administrators can now configure the control key for the **vehicle inventory**.
+
 ## v1.3.4
 - Added Doomsday heists weapons to the Ammu-Nation stores.
 - Fixed missing translations. 

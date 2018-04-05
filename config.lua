@@ -18,6 +18,8 @@ Setup.TrainsEnabled = true
 Setup.debug = false
 Setup.EMS = false
 
+Setup.InventoryKey = 56
+
 -- Cinema settings
 Setup.CinemaPrice = 10
 Setup.CinemaOpen = 10

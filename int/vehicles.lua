@@ -29,13 +29,12 @@ end)
 
 local function SpawnFakeCar(vehicle, price)
   local playerCoords = GetEntityCoords(playerPed)
+  local hash = GetHashKey(vehicle)
 
   if fakecar.model ~= vehicle then
     if DoesEntityExist(fakecar.car) then
       Citizen.InvokeNative(0xEA386986E786A54F, Citizen.PointerValueIntInitialized(fakecar.car))
     end
-
-    local hash = GetHashKey(vehicle)
 
     RequestModel(hash)
     while not HasModelLoaded(hash) do
@@ -379,8 +378,10 @@ Citizen.CreateThread(function()
             end
 
             WarMenu.Display()        
-            elseif IsControlJustReleased(0, 56) then
-                WarMenu.OpenMenu('inventory')
+            elseif not IsPlayerSwitchInProgress() then
+                if IsControlJustReleased(0, Setup.InventoryKey) then
+                    WarMenu.OpenMenu('inventory')
+                end
             end
 
             if engineoff then
