@@ -410,15 +410,16 @@ AddEventHandler('vehshop:spawnVehicle', function(v)
         end
 
         local veh = CreateVehicle(car, playerCoords, true, false)
-        local id = NetworkGetNetworkIdFromEntity(veh)
-        SetNetworkIdCanMigrate(id, true)
-
-        TaskWarpPedIntoVehicle(playerPed, veh, -1)
-        --SetEntityAsMissionEntity(veh, true, true)
         SetVehicleHasBeenOwnedByPlayer(veh, true)
         SetVehRadioStation(veh, "OFF")
 
         FreezeEntityPosition(PlayerPedId(), false)
         SetEntityVisible(PlayerPedId(), true)
+
+        TaskWarpPedIntoVehicle(playerPed, veh, -1)
+
+        local netid = NetworkGetNetworkIdFromEntity(veh)
+        SetNetworkIdCanMigrate(netid, true)
+        NetworkRegisterEntityAsNetworked(VehToNet(veh))
     end
 end)
