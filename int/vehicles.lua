@@ -290,12 +290,7 @@ AddEventHandler('FinishMoneyCheckForVeh', function(moneyCheck)
 
         FreezeEntityPosition(PlayerPedId(), false)
         local personal = CreateVehicle(model, -19.521, -1117.096, 26.765, 175.394, true, true)        
-        local id = NetworkGetNetworkIdFromEntity(personal)
-
-        SetNetworkIdCanMigrate(id, true)
         SetVehicleOnGroundProperly(personal)
-
-        -- SetEntityAsMissionEntity(personal, true, true)
         SetEntityVisible(playerPed, true)
 
         SetVehRadioStation(personal, "OFF")
@@ -305,7 +300,9 @@ AddEventHandler('FinishMoneyCheckForVeh', function(moneyCheck)
         SetVehicleExtraColours(personal, extra_colors[1],extra_colors[2])
         TaskWarpPedIntoVehicle(PlayerPedId(), personal, -1)
 
-
+        local netid = NetworkGetNetworkIdFromEntity(personal)
+        SetNetworkIdCanMigrate(netid, true)
+        NetworkRegisterEntityAsNetworked(VehToNet(personal))        
   else
     if DoesEntityExist(fakecar.car) then
         Citizen.InvokeNative(0xEA386986E786A54F, Citizen.PointerValueIntInitialized(fakecar.car))
