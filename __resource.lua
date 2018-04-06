@@ -11,6 +11,7 @@ weaponfile 'weapons.xml'
 
 client_scripts {
   'libs/i18n.lua',
+  'config.lua',
   'bin/System.Xml.net.dll',
   'bin/NativeUI.net.dll',
   'bin/ShopMenu.net.dll',
@@ -20,7 +21,6 @@ client_scripts {
   'libs/warmenu.lua',
   'config/vehicles.lua',
   'config/spawn.lua',
-  'config.lua',
   'client.lua',
   'int/cinema.lua',
   'int/comedy.lua',

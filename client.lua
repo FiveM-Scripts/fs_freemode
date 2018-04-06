@@ -247,13 +247,7 @@ Citizen.CreateThread(function()
 				TriggerEvent("fs_freemode:notify", Setup.WelcomeNotification, 4, 2, Setup.ServerName, false, i18n.translate("welcome_message") .. playerName)
 			end
 
-			SpawnTimer = GetGameTimer()
 			TriggerEvent('es:setMoneyDisplay', 1.0)
-
-			if GetGameTimer() < SpawnTimer + 6000 then
-				TriggerEvent("fs_freemode:displayHelp", i18n.translate("vehicles_inventory_message"))
-			end
-
 			firstJoin = false
 		end
 

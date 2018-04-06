@@ -44,7 +44,6 @@ i18n.importData("en", {
   vehicles_owned = "Owned vehicles",
   vehicles_lockdoors = "Lock vehicle doors",  
   vehicles_engine_on = "Engine on",
-  vehicles_inventory_message = "Press ~INPUT_DROP_WEAPON~ to open your vehicle inventory.",
   cinema_closed = "The cinema is currently closed.~n~Come back between ",
   enter_cinema = "Press ~INPUT_CONTEXT~ to watch a movie for $10.",
   leave_cinema = "Press ~INPUT_FRONTEND_CANCEL~ to leave",
