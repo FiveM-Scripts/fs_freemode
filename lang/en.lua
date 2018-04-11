@@ -57,5 +57,12 @@ i18n.importData("en", {
   weedshop_title = "Cannabis Menu",
   enter_facility = "Press ~INPUT_CONTEXT~ to enter the facility.",
   leave_facility = "Press ~INPUT_CONTEXT~ to leave the facility.",
-  update_available = "a new update for fs_freemode is available, please update now."
+  update_available = "a new update for fs_freemode is available, please update now.",
+  StartMissionDialog = "Press ~INPUT_PICKUP~ to start the mission.",
+  simeon_firstline = "~y~Simeon:~w~ One of my customers is refusing to pay his loan.",
+  simeon_secondline = "~y~Simeon:~w~ i want you to ~g~collect~w~ the vehicle.",
+  simeon_thirthline = "~y~Simeon:~w~ When you have the ~g~vehicle~w~ drive it to my garage at the docks.",
+  simeon_coordinates = "~y~Simeon:~g~ Drive~w~ to my garage, i placed the coordinates to your GPS.",
+  clear_wantedLevel = "~z~Lose your wanted level before you can reach the ~y~destination point~z~.",
+  simeon_notification = "Hey i would like to use your services, meet me at my office inside ~g~Premium Deluxe MotorSports~w~."
 })

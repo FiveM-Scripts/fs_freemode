@@ -49,10 +49,7 @@ Citizen.CreateThread(function()
         Citizen.Wait(5000)
         local trainCoords = trains[i]
         local thisTrain = CreateMissionTrain(trainCoords.type, trainCoords.x, trainCoords.y, trainCoords.z, true)
-        NetworkRegisterEntityAsNetworked(thisTrain)
-        SetNetworkIdCanMigrate(thisTrain, true)
-        Wait(5000)
-
+       
         SetEntityProofs(thisTrain, true, true, true, true, true, false, 0, false)
         SetEntityAsMissionEntity(thisTrain, true, true)
         CreatePedInsideVehicle(thisTrain, 26, GetHashKey("s_m_m_lsmetro_01"), -1, 1, true)

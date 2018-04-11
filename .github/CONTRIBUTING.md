@@ -7,6 +7,7 @@ Guidelines for bug reports:
 - Use the github issue search - check if the issue is already reported.
 - Check if the issue has been fixed - try to reproduce it using the lastest version.
 - isolate the problem - So the community doesn't have hard times finding the possible bug.
+- Use the issue template.
 
 ## Labels
 
