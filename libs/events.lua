@@ -18,7 +18,7 @@ function DrawPopup(text)
 	ClearPrints()
 	SetNotificationTextEntry("STRING")
 	AddTextComponentString(text)
-	DrawNotification(0,1)
+	DrawNotification(0, 1)
 end
 
 RegisterNetEvent("fs_freemode:displayPopup")
@@ -56,10 +56,12 @@ end)
 RegisterNetEvent("fs_freemode:notify")
 AddEventHandler("fs_freemode:notify", function(icon, type, color, sender, title, text)
 	Citizen.InvokeNative(0x92F0DA1E27DB96DC, tonumber(color))
-	SetNotificationTextEntry("STRING");
-	AddTextComponentString(text);
-	SetNotificationMessage(icon, icon, true, type, sender, title, text);
-	DrawNotification(false, true);
+	SetNotificationTextEntry("STRING")
+	AddTextComponentString(text)
+	SetNotificationMessage(icon, icon, true, type, sender, title, text)
+	DrawNotification(false, true)
+
+	PlaySoundFrontend(GetSoundId(), "Text_Arrive_Tone", "Phone_SoundSet_Default", true)
 end)
 
 RegisterNetEvent("fs_freemode:UpdateNofity")
@@ -73,9 +75,8 @@ RegisterNetEvent('fs_freemode:spawnWeapons')
 AddEventHandler('fs_freemode:spawnWeapons', function(weapon)
 	Wait(1000)
 	if Setup.debug == true then
-		Citizen.Trace("Adding weapon: " .. weapon .."\n")
+	Citizen.Trace("Adding weapon: " .. weapon .."\n")
 	end
 	
-	GiveWeaponToPed(GetPlayerPed(-1), GetHashKey(weapon), 1000, false)
+	GiveWeaponToPed(PlayerPedId(), GetHashKey(weapon), -1, false)
 end)
-

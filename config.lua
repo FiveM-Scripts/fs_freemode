@@ -36,5 +36,3 @@ PickupItems = {
     "PICKUP_WEAPON_MINISMG",
     "PICKUP_WEAPON_AUTOSHOTGUN"
 }
-
-

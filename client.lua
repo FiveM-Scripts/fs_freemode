@@ -15,6 +15,7 @@ along with fs_freemode in the file "LICENSE". If not, see <http://www.gnu.org/li
 ]]
 
 i18n.setLang(Setup.Language)
+MissionStarted = false
 
 firstTick = false
 firstJoin = true
@@ -22,6 +23,9 @@ firstJoin = true
 spawnLock = false
 sendmsg = false
 playerName = nil
+
+scaleform = nil
+instructional = nil
 
 function ButtonMessage(text)
     BeginTextCommandScaleformString("STRING")
@@ -115,6 +119,8 @@ local function death_screen()
     PopScaleformMovieFunctionVoid()
     DrawScaleformMovieFullscreen(Instructional, 255, 255, 255, 255, 0)
 	TriggerEvent('es:setMoneyDisplay', 0.0)
+
+	return deathscale
 end
 
 Citizen.CreateThread(function()
@@ -127,7 +133,7 @@ Citizen.CreateThread(function()
 		end
 
 		if GetEntityHealth(PlayerPedId()) <= 0 then
-			death_screen()
+			deathscale = death_screen()
 		
 			if IsControlJustPressed(0, 24) then
 				DoScreenFadeOut(800)
@@ -153,7 +159,7 @@ Citizen.CreateThread(function()
 				Wait(200)
 				DoScreenFadeIn(800)
 
-				SetScaleformMovieAsNoLongerNeeded(scaleform)
+				SetScaleformMovieAsNoLongerNeeded(deathscale)
 				SetScaleformMovieAsNoLongerNeeded(Instructional)
 
 				TriggerEvent('es:setMoneyDisplay', 1.0)
@@ -164,6 +170,15 @@ Citizen.CreateThread(function()
 				if IsControlJustPressed(0, 38) then
 					TriggerServerEvent("fs_freemode:notifyAll", "CHAR_CALL911", i18n.translate("dispatch"), i18n.translate("ems_heal"), playerName .. i18n.translate("ems_request"))
 				end
+			end
+		else
+			if HasScaleformMovieLoaded(deathscale) then
+					StopScreenEffect("DeathFailOut")
+					locksound = false
+
+					TriggerEvent('es:setMoneyDisplay', 1.0)
+					SetScaleformMovieAsNoLongerNeeded(Instructional)
+					SetScaleformMovieAsNoLongerNeeded(deathscale)
 			end
 		end
 
@@ -247,15 +262,8 @@ Citizen.CreateThread(function()
 				TriggerEvent("fs_freemode:notify", Setup.WelcomeNotification, 4, 2, Setup.ServerName, false, i18n.translate("welcome_message") .. playerName)
 			end
 
-			SpawnTimer = GetGameTimer()
 			TriggerEvent('es:setMoneyDisplay', 1.0)
-
-			if GetGameTimer() < SpawnTimer + 6000 then
-				TriggerEvent("fs_freemode:displayHelp", i18n.translate("vehicles_inventory_message"))
-			end
-
 			firstJoin = false
 		end
-
 	end
 end)
