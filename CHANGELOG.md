@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 - Removed the vehicle inventory notification message.
 - Added ``Simeon Yetarian`` vehicle repossession mission, you can find him at **Premium Deluxe MotorSport**.    
 i recommend not to enable any **no wanted** scripts or trainers while doing this mission.
-- Fixed deathscreen causing conflicts when using a **EMS/revive** resource.
+- Fixed death screen causing conflicts when using a **EMS/revive** resource.
 
 ## v1.3.5
 - Server administrators can now configure the control key for the **vehicle inventory**.
