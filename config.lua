@@ -15,7 +15,7 @@ Setup.Currency = "$"
 Setup.SpawnPickups = true
 Setup.SetTextChatEnabled = false
 Setup.TrainsEnabled = true
-Setup.debug = false
+Setup.debug = true
 Setup.EMS = false
 
 Setup.InventoryKey = 56
@@ -27,8 +27,6 @@ Setup.CinemaClose = 22
 
 -- Pickups
 PickupItems = {
-    "PICKUP_ARMOUR_STANDARD",
-    "PICKUP_HEALTH_STANDARD",
     "PICKUP_WEAPON_SMG",
     "PICKUP_WEAPON_SAWNOFFSHOTGUN",
     "PICKUP_WEAPON_ASSAULTRIFLE",

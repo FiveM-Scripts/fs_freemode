@@ -221,12 +221,14 @@ AddEventHandler("playerSpawned", function(spawn)
 	
 	SetPedComponentVariation(PlayerPedId(), 0, math.random(0, 5), 0, 2)
 	SetPedComponentVariation(PlayerPedId(), 2, math.random(1, 17), 3, 2)
-	SetPedComponentVariation(PlayerPedId(), 3, 164, 0, 2)
-	
-	SetPedComponentVariation(PlayerPedId(), 4, math.random(0, 10), math.random(5), 2)
-	SetPedComponentVariation(PlayerPedId(), 6, math.random(0, 6), 0, 2)
-	SetPedComponentVariation(PlayerPedId(), 8, 2, 0, 2)
-	SetPedComponentVariation(PlayerPedId(), 11, 0, math.random(0, 9), 2)
+    SetPedComponentVariation(PlayerPedId(), 3, 164, 0, 2)
+
+    SetPedComponentVariation(PlayerPedId(), 4, 1, math.random(2), 2)
+    SetPedComponentVariation(PlayerPedId(), 6, math.random(0, 6), 0, 2)
+    SetPedComponentVariation(PlayerPedId(), 10, 7, 0, 2)
+        
+    SetPedComponentVariation(PlayerPedId(), 8, 2, 0, 2)
+    SetPedComponentVariation(PlayerPedId(), 11, 0, math.random(0, 9), 2)
 
 	SetPedHairColor(PlayerPedId(), math.random(1, 4), 1)
 
