@@ -15,7 +15,7 @@ Setup.Currency = "$"
 Setup.SpawnPickups = true
 Setup.SetTextChatEnabled = false
 Setup.TrainsEnabled = true
-Setup.debug = true
+Setup.debug = false
 Setup.EMS = false
 
 Setup.InventoryKey = 56
