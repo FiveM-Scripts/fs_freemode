@@ -64,15 +64,17 @@ local PickupCoords = {
 }
 
 Citizen.CreateThread(function() 
+    Citizen.Wait(6000)
     if Setup.SpawnPickups then
         for k ,v in ipairs(PickupCoords) do
-            local rPickup = PickupItems[GetRandomIntInRange(1, #PickupItems)]
-            local pickup = CreatePickupRotate(GetHashKey(rPickup), v.x, v.y, v.z, 0, 0, 0, 512, 1, 1, 1, GetHashKey(rPickup))
+            rPickup = PickupItems[GetRandomIntInRange(1, #PickupItems)]
+            pickup = CreatePickupRotate(GetHashKey(rPickup), v.x, v.y, v.z, 0, 0, 0, 512, 200, 1, 1, GetHashKey(rPickup))
             SetPickupRegenerationTime(pickup, 60)
 
             if Setup.debug then
                 local pickupBlip = AddBlipForPickup(pickup)
-                SetBlipAsShortRange(pickupBlip, true)
+                SetBlipSprite(pickupBlip, 1)
+                SetBlipColour(pickupBlip, 24)
             end
         end
 	end

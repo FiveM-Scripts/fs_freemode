@@ -1,6 +1,10 @@
 # Changelog    
 All notable changes to this project will be documented in this file.
 
+## v1.3.7
+- Increased pickup amount.
+- fixed ped model components.
+
 ## v1.3.6
 - Removed the vehicle inventory notification message.
 - Added ``Simeon Yetarian`` vehicle repossession mission, you can find him at **Premium Deluxe MotorSport**.    
